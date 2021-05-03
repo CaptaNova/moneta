@@ -1,5 +1,4 @@
-import { AssetType, AssetTypeConfiguration } from "@/models/AssetType";
-import { LanguageCode } from "@/models/LanguageCode";
+import { AssetType, AssetTypeConfiguration, LanguageCode } from "@/models";
 
 export function translateAssetType(
   assetType: AssetType,

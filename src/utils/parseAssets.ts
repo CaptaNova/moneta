@@ -1,5 +1,4 @@
-import { Document } from "@/models/Document";
-import { FinancialProduct } from "@/models/FinancialProduct";
+import { Document, FinancialProduct } from "@/models";
 
 export function parseAssets(document: Document): FinancialProduct[] {
   if (document.meta.version === "1.0") {

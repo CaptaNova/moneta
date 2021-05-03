@@ -18,10 +18,10 @@
           <option disabled value="">Bitte auswählen</option>
           <option
             v-for="assetType of assetTypes"
-            :key="assetType"
-            :value="assetType"
+            :key="assetType.value"
+            :value="assetType.value"
           >
-            {{ translateAssetType(assetType, "de") }}
+            {{ assetType.label }}
           </option>
         </select>
         <!-- financial institution -->
@@ -63,11 +63,11 @@
 </template>
 
 <script lang="ts">
+import { ListOption } from "@/common";
+import { AssetType, AssetTypeConfiguration, FinancialProduct } from "@/models";
+import { translateAssetType } from "@/utils/translateAssetType";
 import { defineComponent } from "vue";
 import { mapActions } from "vuex";
-import { AssetType, AssetTypeConfiguration } from "@/models/AssetType";
-import { FinancialProduct } from "@/models/FinancialProduct";
-import { translateAssetType } from "@/utils/translateAssetType";
 
 export default defineComponent({
   name: "AssetCreate",
@@ -85,8 +85,15 @@ export default defineComponent({
   },
 
   computed: {
-    assetTypes() {
-      return Object.keys(AssetTypeConfiguration);
+    assetTypes(): ListOption[] {
+      return Object.keys(AssetTypeConfiguration)
+        .map(
+          (assetType: string): ListOption => ({
+            label: translateAssetType(assetType as AssetType, "de"),
+            value: assetType,
+          })
+        )
+        .sort((a: ListOption, b: ListOption) => a.label.localeCompare(b.label));
     },
   },
 

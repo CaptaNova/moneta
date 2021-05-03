@@ -1,5 +1,4 @@
-import { Document, DocumentMeta } from "@/models/Document";
-import { FinancialProduct } from "@/models/FinancialProduct";
+import { Document, DocumentMeta, FinancialProduct } from "@/models";
 
 export function createDownloadFile(assets: FinancialProduct[]): string {
   const meta: DocumentMeta = { version: "1.0" };
