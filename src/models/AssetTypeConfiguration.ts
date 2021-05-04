@@ -8,11 +8,20 @@ export const AssetTypeConfiguration: Record<
   BankSavingsPlan: {
     translation: { de: "Banksparplan" },
   },
+  Bond: {
+    translation: { de: "Anleihe" },
+  },
   BondFund: {
     translation: { de: "Rentenfonds" },
   },
   CheckingAccount: {
     translation: { de: "Girokonto" },
+  },
+  ConstructionLoan: {
+    translation: { de: "Bausparvertrag" },
+  },
+  EndowmentPolicy: {
+    translation: { de: "Kapitallebensversicherung" },
   },
   IndexCertificate: {
     translation: { de: "Indexzertifikat" },
@@ -23,11 +32,20 @@ export const AssetTypeConfiguration: Record<
   MoneyMarketAccount: {
     translation: { de: "Tagesgeldkonto" },
   },
+  MoneyMarketFund: {
+    translation: { de: "Geldmarktfonds" },
+  },
   OtherAssets: {
     translation: { de: "Sonstige" },
   },
   RealEstateFund: {
     translation: { de: "Immobilienfonds" },
+  },
+  RiesterPension: {
+    translation: { de: "Riester-Rente" },
+  },
+  RuerupPension: {
+    translation: { de: "Rürup-Rente" },
   },
   SecuritiesAccount: {
     translation: { de: "Wertpapierdepot" },
@@ -43,5 +61,8 @@ export const AssetTypeConfiguration: Record<
   },
   TimeDeposit: {
     translation: { de: "Festgeldkonto" },
+  },
+  UnitLinkedPensionInsurance: {
+    translation: { de: "Fondsgebundene Rentenversicherung" },
   },
 };

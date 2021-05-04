@@ -1,14 +1,21 @@
 export type AssetType =
   | "BankSavingsPlan"
+  | "Bond"
   | "BondFund"
   | "CheckingAccount"
+  | "ConstructionLoan"
+  | "EndowmentPolicy"
   | "IndexCertificate"
   | "MixedFund"
   | "MoneyMarketAccount"
+  | "MoneyMarketFund"
   | "OtherAssets"
   | "RealEstateFund"
+  | "RiesterPension"
+  | "RuerupPension"
   | "SecuritiesAccount"
   | "Share"
   | "StockFund"
   | "SubordinatedDebt"
-  | "TimeDeposit";
+  | "TimeDeposit"
+  | "UnitLinkedPensionInsurance";
