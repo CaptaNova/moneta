@@ -22,6 +22,7 @@ function mapToSchema(asset: FinancialProduct): unknown {
       currency: asset.amount.currency,
       value: asset.amount.value.toString(10),
     },
+    description: asset.description,
     identifier: asset.identifier,
     name: asset.name,
     provider: asset.provider

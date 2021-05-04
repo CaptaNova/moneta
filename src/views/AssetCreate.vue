@@ -52,6 +52,9 @@
           required
           v-model.number="asset.amount"
         />
+        <!-- notes -->
+        <label for="notesField">Notizen</label>
+        <textarea id="notesField" v-model.trim="asset.description"></textarea>
         <button type="submit" class="button">Anlage hinzufügen</button>
         &nbsp;
         <button type="button" class="button-outline" @click.prevent="onAbort">
@@ -77,6 +80,7 @@ export default defineComponent({
       asset: {
         accountNumber: "",
         amount: (undefined as unknown) as number,
+        description: "",
         name: "",
         provider: "",
         type: "",
@@ -103,15 +107,19 @@ export default defineComponent({
       this.$router.push("/financial-statement");
     },
     onFormSubmit() {
+      console.log("this.asset.description", this.asset.description);
       const newAsset: FinancialProduct = {
         amount: {
           currency: "EUR",
           value: this.asset.amount,
         },
-        provider: { name: this.asset.provider },
-        serviceType: (this.asset.type as unknown) as AssetType,
-        name: this.asset.name,
+        description: this.asset.description || undefined,
         identifier: this.asset.accountNumber,
+        name: this.asset.name,
+        provider: this.asset.provider
+          ? { name: this.asset.provider }
+          : undefined,
+        serviceType: (this.asset.type as unknown) as AssetType,
       };
       this.addAsset(newAsset);
       this.$router.push("/financial-statement");

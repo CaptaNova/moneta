@@ -17,13 +17,14 @@ function parseAssetsV1(data: Partial<FinancialProduct>[]): FinancialProduct[] {
         ((item.amount?.value as unknown) as string) ?? "0"
       ),
     },
+    description: item.description,
+    identifier: item.identifier ?? `error:${Date.now()}`,
+    name: item.name ?? "UNNAMED ASSET",
     provider: item.provider
       ? {
           name: item.provider.name,
         }
       : undefined,
     serviceType: item.serviceType ?? "OtherAssets",
-    name: item.name ?? "UNNAMED ASSET",
-    identifier: item.identifier ?? `error:${Date.now()}`,
   }));
 }
