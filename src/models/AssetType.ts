@@ -9,6 +9,7 @@ export type AssetType =
   | "MixedFund"
   | "MoneyMarketAccount"
   | "MoneyMarketFund"
+  | "OccupationalPensionScheme"
   | "OtherAssets"
   | "RealEstateFund"
   | "RiesterPension"

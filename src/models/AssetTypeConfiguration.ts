@@ -35,6 +35,9 @@ export const AssetTypeConfiguration: Record<
   MoneyMarketFund: {
     translation: { de: "Geldmarktfonds" },
   },
+  OccupationalPensionScheme: {
+    translation: { de: "Betriebliche Altersvorsorge" },
+  },
   OtherAssets: {
     translation: { de: "Sonstige" },
   },
