@@ -19,6 +19,19 @@ function parseAssetsV1(data: Partial<FinancialProduct>[]): FinancialProduct[] {
     },
     description: item.description,
     identifier: item.identifier ?? `error:${Date.now()}`,
+    loanRepaymentForm: item.loanRepaymentForm
+      ? {
+          loanPaymentAmount: {
+            currency:
+              item.loanRepaymentForm.loanPaymentAmount.currency || "EUR",
+            value: Number.parseFloat(
+              ((item.loanRepaymentForm.loanPaymentAmount
+                .value as unknown) as string) ?? "0"
+            ),
+          },
+          loanPaymentFrequency: item.loanRepaymentForm.loanPaymentFrequency,
+        }
+      : undefined,
     name: item.name ?? "UNNAMED ASSET",
     provider: item.provider
       ? {

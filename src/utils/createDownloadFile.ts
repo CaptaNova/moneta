@@ -24,6 +24,16 @@ function mapToSchema(asset: FinancialProduct): unknown {
     },
     description: asset.description,
     identifier: asset.identifier,
+    loanRepaymentForm: asset.loanRepaymentForm
+      ? {
+          "@type": "RepaymentSpecification",
+          loanPaymentAmount: {
+            currency: asset.loanRepaymentForm.loanPaymentAmount.currency,
+            value: asset.loanRepaymentForm.loanPaymentAmount.value.toString(10),
+          },
+          loanPaymentFrequency: asset.loanRepaymentForm.loanPaymentFrequency,
+        }
+      : undefined,
     name: asset.name,
     provider: asset.provider
       ? {

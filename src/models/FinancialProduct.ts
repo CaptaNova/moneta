@@ -1,4 +1,5 @@
 import { AssetType } from "./AssetType";
+import { Currency } from "./Currency";
 
 // see https://schema.org/Thing
 interface Thing {
@@ -22,9 +23,18 @@ interface Service extends Thing {
 // see https://schema.org/FinancialProduct
 export interface FinancialProduct extends Service {
   amount: {
-    currency: "EUR" | "USD";
+    currency: Currency;
     value: number; // Betrag
   };
 
   //   interestRate: number; // Verzinsung
+
+  // borrowed from https://schema.org/LoanOrCredit
+  loanRepaymentForm?: {
+    loanPaymentAmount: {
+      currency: Currency;
+      value: number; // Betrag
+    };
+    loanPaymentFrequency: number;
+  };
 }

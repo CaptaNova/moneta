@@ -52,9 +52,20 @@
           required
           v-model.number="asset.amount"
         />
+        <!-- savings rate -->
+        <label for="savingsRateField"
+          >monatliche Sparrate <em>(optional)</em></label
+        >
+        <input
+          type="number"
+          id="savingsRateField"
+          placeholder="z. B. 50"
+          v-model.number="asset.savingsRate"
+        />
         <!-- notes -->
-        <label for="notesField">Notizen</label>
+        <label for="notesField">Notizen <em>(optional)</em></label>
         <textarea id="notesField" v-model.trim="asset.description"></textarea>
+        <!-- actions -->
         <button type="submit" class="button">Anlage hinzufügen</button>
         &nbsp;
         <button type="button" class="button-outline" @click.prevent="onAbort">
@@ -83,6 +94,7 @@ export default defineComponent({
         description: "",
         name: "",
         provider: "",
+        savingsRate: (undefined as unknown) as number,
         type: "",
       },
     };
@@ -107,7 +119,6 @@ export default defineComponent({
       this.$router.push("/financial-statement");
     },
     onFormSubmit() {
-      console.log("this.asset.description", this.asset.description);
       const newAsset: FinancialProduct = {
         amount: {
           currency: "EUR",
@@ -115,6 +126,15 @@ export default defineComponent({
         },
         description: this.asset.description || undefined,
         identifier: this.asset.accountNumber,
+        loanRepaymentForm: this.asset.savingsRate
+          ? {
+              loanPaymentAmount: {
+                currency: "EUR",
+                value: this.asset.savingsRate,
+              },
+              loanPaymentFrequency: 1, // monthly
+            }
+          : undefined,
         name: this.asset.name,
         provider: this.asset.provider
           ? { name: this.asset.provider }
