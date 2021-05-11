@@ -5,7 +5,8 @@
     <h1 class="title">Moneta</h1>
     <p class="description" data-version="Currently">
       <!-- TODO: mission statement -->
-      A minimalist CSS framework <br /><i
+      Basic financial analysis for private households<br />
+      <i
         ><small>Currently v{{ version }}</small></i
       >
     </p>
@@ -14,26 +15,17 @@
     >
     <!-- TODO: introduction -->
   </section>
-
-  <!--
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  </div>
-  -->
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-// import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
 
 export default defineComponent({
   name: "Home",
-  components: {
-    // HelloWorld,
-  },
+
   data() {
     return {
-      version: "1.0.0",
+      version: process.env.VUE_APP_VERSION,
     };
   },
 });

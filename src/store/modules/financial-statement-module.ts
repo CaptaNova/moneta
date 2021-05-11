@@ -1,30 +1,47 @@
 import { FinancialProduct } from "@/models/FinancialProduct";
+import { getAssetId } from "@/modules/financialStatement";
+import { IRootState } from "../state";
 
-type State = { accounts: FinancialProduct[] };
-
-const state: State = {
+const state: IRootState = {
   accounts: [],
 };
 
 const getters = {
-  accountList: (state: State): FinancialProduct[] => state.accounts,
+  accountList: (state: IRootState): FinancialProduct[] => state.accounts,
 };
 
 const actions = {
+  addAsset({ commit }: any, account: FinancialProduct): void {
+    commit("ADD_ASSET", account);
+  },
   loadAccounts({ commit }: any, accounts: FinancialProduct[]): void {
     commit("SET_ASSETS", accounts);
   },
-  addAsset({ commit }: any, account: FinancialProduct): void {
-    commit("ADD_ASSET", account);
+  updateAsset(
+    { commit }: any,
+    payload: { id: string; asset: FinancialProduct }
+  ): void {
+    commit("UPDATE_ASSET", payload);
   },
 };
 
 const mutations = {
-  SET_ASSETS: (state: State, accounts: FinancialProduct[]): void => {
+  ADD_ASSET: (state: IRootState, account: FinancialProduct): void => {
+    state.accounts = [...state.accounts, account];
+  },
+  SET_ASSETS: (state: IRootState, accounts: FinancialProduct[]): void => {
     state.accounts = accounts;
   },
-  ADD_ASSET: (state: State, account: FinancialProduct): void => {
-    state.accounts.unshift(account);
+  UPDATE_ASSET: (
+    state: IRootState,
+    payload: { id: string; asset: FinancialProduct }
+  ): void => {
+    state.accounts = [
+      ...state.accounts.filter(
+        (asset: FinancialProduct) => getAssetId(asset) !== payload.id
+      ),
+      payload.asset,
+    ];
   },
 };
 

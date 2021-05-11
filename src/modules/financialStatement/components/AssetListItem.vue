@@ -1,5 +1,5 @@
 <template>
-  <div class="asset container">
+  <div class="asset container" @click="editAsset">
     <div class="row">
       <div class="column name">{{ asset.name }}</div>
       <div class="column provider">
@@ -31,19 +31,25 @@
 import { defineComponent, PropType } from "vue";
 import { FinancialProduct } from "@/models/FinancialProduct";
 import { translateAssetType } from "@/utils/translateAssetType";
+import { getAssetId } from "../getAssetId";
 
 export default defineComponent({
   name: "AssetListItem",
-
-  methods: {
-    translateAssetType,
-  },
 
   props: {
     asset: {
       type: Object as PropType<FinancialProduct>,
       required: true,
     },
+  },
+
+  methods: {
+    editAsset() {
+      const id = getAssetId(this.asset);
+      this.$router.push(`/financial-statement/asset/${id}`);
+    },
+
+    translateAssetType,
   },
 });
 </script>
@@ -52,6 +58,11 @@ export default defineComponent({
 .asset {
   border-bottom: 0.1rem solid #e1e1e1;
   padding: 1.2rem 0;
+
+  &:hover {
+    background-color: rgba(96, 108, 118, 0.15);
+    cursor: pointer;
+  }
 }
 .actions {
   margin-top: 3rem;

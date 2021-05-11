@@ -16,23 +16,24 @@ import { FinancialProduct } from "@/models/FinancialProduct";
 export default defineComponent({
   name: "AssetListSummary",
 
+  props: {
+    assets: {
+      type: Array as PropType<FinancialProduct[]>,
+      required: true,
+    },
+
+    title: {
+      type: String,
+      required: true,
+    },
+  },
+
   computed: {
     total(): number {
       const reducer = (accumulator: number, currentValue: FinancialProduct) =>
         accumulator + currentValue.amount.value;
 
       return this.assets.reduce(reducer, 0);
-    },
-  },
-
-  props: {
-    assets: {
-      type: Array as PropType<FinancialProduct[]>,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
     },
   },
 });

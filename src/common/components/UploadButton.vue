@@ -14,9 +14,12 @@ import { validateDocumentSchema } from "@/utils/validateDocumentSchema";
 
 export default defineComponent({
   name: "UploadButton",
+
   computed: mapGetters(["accountList"]),
+
   methods: {
     ...mapActions(["loadAccounts"]),
+
     importData(
       data: string | ArrayBuffer | null | undefined,
       readerError: DOMException | null

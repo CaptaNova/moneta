@@ -23,6 +23,13 @@ export default defineComponent({
     AssetListItem,
   },
 
+  props: {
+    assets: {
+      type: Array as PropType<FinancialProduct[]>,
+      required: true,
+    },
+  },
+
   computed: {
     assetsByName(): FinancialProduct[] {
       return this.assets
@@ -30,13 +37,6 @@ export default defineComponent({
         .sort((a, b) =>
           a.name.toLowerCase().localeCompare(b.name.toLowerCase())
         );
-    },
-  },
-
-  props: {
-    assets: {
-      type: Array as PropType<FinancialProduct[]>,
-      required: true,
     },
   },
 });

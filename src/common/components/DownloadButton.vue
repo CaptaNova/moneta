@@ -11,7 +11,9 @@ import { createDownloadFile } from "@/utils/createDownloadFile";
 
 export default defineComponent({
   name: "DownloadButton",
+
   computed: mapGetters(["accountList"]),
+
   methods: {
     onDownload(): void {
       // see https://medium.com/js-dojo/force-file-download-in-vuejs-using-axios-a7fe1b5dfe7b

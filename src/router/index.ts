@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import AssetCreate from "@/views/AssetCreate.vue";
+import AssetEdit from "@/views/AssetEdit.vue";
 import FinancialStatement from "@/views/FinancialStatement.vue";
 import Home from "@/views/Home.vue";
 
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/financial-statement/asset/add",
     name: "AssetCreate",
     component: AssetCreate,
+  },
+  {
+    path: "/financial-statement/asset/:assetId",
+    name: "AssetEdit",
+    component: AssetEdit,
   },
   {
     path: "/about",
