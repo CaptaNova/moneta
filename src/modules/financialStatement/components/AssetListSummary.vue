@@ -2,7 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="column title">{{ title }}</div>
-      <div class="column column-offset-50 total">
+      <div
+        class="column column-offset-50 total"
+        :class="{
+          positive: total >= 0,
+          negative: total < 0,
+        }"
+      >
         {{ total.toFixed(2) }} EUR
       </div>
     </div>
@@ -10,8 +16,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
 import { FinancialProduct } from "@/models/FinancialProduct";
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "AssetListSummary",
@@ -41,7 +47,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .container {
-  padding: 1.2rem 0;
+  border-top: 0.1rem solid #9b4dca;
+  max-width: 120rem;
+  padding: 1.2rem 4rem 1.2rem 0;
 }
 .title {
   font-weight: 700;
@@ -49,5 +57,12 @@ export default defineComponent({
 .total {
   font-weight: 700;
   text-align: right;
+
+  &.negative {
+    color: firebrick;
+  }
+  &.positive {
+    color: forestgreen;
+  }
 }
 </style>

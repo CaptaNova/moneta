@@ -1,31 +1,34 @@
 <template>
-  <template v-if="assets.length > 0">
-    <AssetListItem
-      v-for="asset in assetsByName"
-      :key="asset.identifier"
-      :asset="asset"
-    />
-  </template>
-  <template v-else>
-    <div class="container no-asset">Du hast noch keine Anlagen angelegt.</div>
-  </template>
+  <AssetListSummary :assets="assets" :title="title" />
+  <AssetListItem
+    v-for="asset in assetsByName"
+    :key="asset.identifier"
+    :asset="asset"
+  />
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
 import { FinancialProduct } from "@/models/FinancialProduct";
 import AssetListItem from "@/modules/financialStatement/components/AssetListItem.vue";
+import AssetListSummary from "@/modules/financialStatement/components/AssetListSummary.vue";
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "AssetList",
 
   components: {
     AssetListItem,
+    AssetListSummary,
   },
 
   props: {
     assets: {
       type: Array as PropType<FinancialProduct[]>,
+      required: true,
+    },
+
+    title: {
+      type: String,
       required: true,
     },
   },
@@ -41,11 +44,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.no-asset {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  text-align: center;
-}
-</style>

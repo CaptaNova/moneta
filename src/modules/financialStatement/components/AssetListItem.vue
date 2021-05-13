@@ -5,13 +5,7 @@
       <div class="column provider">
         {{ asset.provider && asset.provider.name ? asset.provider.name : "--" }}
       </div>
-      <div
-        class="column amount"
-        :class="{
-          positive: asset.amount.value > 0,
-          negative: asset.amount.value < 0,
-        }"
-      >
+      <div class="column amount">
         {{ asset.amount.value.toFixed(2) }} {{ asset.amount.currency }}
       </div>
     </div>
@@ -28,9 +22,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
 import { FinancialProduct } from "@/models/FinancialProduct";
 import { translateAssetType } from "@/utils/translateAssetType";
+import { defineComponent, PropType } from "vue";
 import { getAssetId } from "../getAssetId";
 
 export default defineComponent({
@@ -70,13 +64,6 @@ export default defineComponent({
 .amount {
   font-weight: 700;
   text-align: right;
-
-  &.negative {
-    color: firebrick;
-  }
-  &.positive {
-    color: forestgreen;
-  }
 }
 .name {
   font-weight: 700;

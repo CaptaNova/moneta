@@ -11,18 +11,22 @@ const getters = {
 };
 
 const actions = {
-  addAsset({ commit }: unknown, account: FinancialProduct): void {
+  /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  addAsset({ commit }: any, account: FinancialProduct): void {
     commit("ADD_ASSET", account);
   },
-  loadAccounts({ commit }: unknown, accounts: FinancialProduct[]): void {
+  loadAccounts({ commit }: any, accounts: FinancialProduct[]): void {
     commit("SET_ASSETS", accounts);
   },
   updateAsset(
-    { commit }: unknown,
+    { commit }: any,
     payload: { id: string; asset: FinancialProduct }
   ): void {
     commit("UPDATE_ASSET", payload);
   },
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+  /* eslint-enable @typescript-eslint/explicit-module-boundary-types */
 };
 
 const mutations = {
