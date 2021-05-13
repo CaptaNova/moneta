@@ -45,7 +45,7 @@ export default defineComponent({
 
   methods: {
     editAsset() {
-      const id = getAssetId(this.asset);
+      const id = getAssetId(this.asset.identifier);
       this.$router.push(`/financial-statement/asset/${id}`);
     },
 

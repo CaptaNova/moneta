@@ -1,5 +1,3 @@
-import { FinancialProduct } from "@/models";
-
-export function getAssetId(asset: FinancialProduct): string {
-  return asset.identifier.replaceAll(" ", "").toLowerCase();
+export function getAssetId(identifier: string): string {
+  return identifier.replaceAll(" ", "").toLowerCase();
 }

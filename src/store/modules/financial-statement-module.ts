@@ -11,14 +11,14 @@ const getters = {
 };
 
 const actions = {
-  addAsset({ commit }: any, account: FinancialProduct): void {
+  addAsset({ commit }: unknown, account: FinancialProduct): void {
     commit("ADD_ASSET", account);
   },
-  loadAccounts({ commit }: any, accounts: FinancialProduct[]): void {
+  loadAccounts({ commit }: unknown, accounts: FinancialProduct[]): void {
     commit("SET_ASSETS", accounts);
   },
   updateAsset(
-    { commit }: any,
+    { commit }: unknown,
     payload: { id: string; asset: FinancialProduct }
   ): void {
     commit("UPDATE_ASSET", payload);
@@ -38,7 +38,7 @@ const mutations = {
   ): void => {
     state.accounts = [
       ...state.accounts.filter(
-        (asset: FinancialProduct) => getAssetId(asset) !== payload.id
+        (asset: FinancialProduct) => getAssetId(asset.identifier) !== payload.id
       ),
       payload.asset,
     ];

@@ -2,6 +2,7 @@
   <h3>Anlage bearbeiten</h3>
   <AssetForm
     :asset="getAsset()"
+    :assetIds="usedAssetIds"
     primaryButtonText="Speichern"
     @abort="onAbort"
     @submit="onSubmit"
@@ -22,13 +23,22 @@ export default defineComponent({
     AssetForm,
   },
 
+  computed: {
+    usedAssetIds(): Array<string> {
+      const ownAssetId = this.$route.params.assetId;
+      return this.$store.state.FinancialStatementModule.accounts
+        .map((asset: FinancialProduct) => getAssetId(asset.identifier))
+        .filter((assetId: string) => assetId !== ownAssetId);
+    },
+  },
+
   methods: {
     ...mapActions(["updateAsset"]),
 
     getAsset(): FinancialProduct | undefined {
       const assetId = this.$route.params.assetId;
       return this.$store.state.FinancialStatementModule.accounts.find(
-        (asset: FinancialProduct) => getAssetId(asset) === assetId
+        (asset: FinancialProduct) => getAssetId(asset.identifier) === assetId
       );
     },
 

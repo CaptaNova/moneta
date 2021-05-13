@@ -90,11 +90,11 @@ export default defineComponent({
     return {
       asset: {
         accountNumber: "",
-        amount: (undefined as unknown) as number,
+        amount: undefined as unknown as number,
         description: "",
         name: "",
         provider: "",
-        savingsRate: (undefined as unknown) as number,
+        savingsRate: undefined as unknown as number,
         type: "",
       },
     };
@@ -139,7 +139,7 @@ export default defineComponent({
         provider: this.asset.provider
           ? { name: this.asset.provider }
           : undefined,
-        serviceType: (this.asset.type as unknown) as AssetType,
+        serviceType: this.asset.type as unknown as AssetType,
       };
       this.addAsset(newAsset);
       this.$router.push("/financial-statement");

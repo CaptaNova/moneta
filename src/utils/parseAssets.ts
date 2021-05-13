@@ -3,7 +3,7 @@ import { Document, FinancialProduct } from "@/models";
 export function parseAssets(document: Document): FinancialProduct[] {
   if (document.meta.version === "1.0") {
     return parseAssetsV1(
-      (document.data.assets as unknown) as Partial<FinancialProduct>[]
+      document.data.assets as unknown as Partial<FinancialProduct>[]
     );
   }
   return [];
@@ -14,7 +14,7 @@ function parseAssetsV1(data: Partial<FinancialProduct>[]): FinancialProduct[] {
     amount: {
       currency: item.amount?.currency || "EUR",
       value: Number.parseFloat(
-        ((item.amount?.value as unknown) as string) ?? "0"
+        (item.amount?.value as unknown as string) ?? "0"
       ),
     },
     description: item.description,
@@ -25,8 +25,8 @@ function parseAssetsV1(data: Partial<FinancialProduct>[]): FinancialProduct[] {
             currency:
               item.loanRepaymentForm.loanPaymentAmount.currency || "EUR",
             value: Number.parseFloat(
-              ((item.loanRepaymentForm.loanPaymentAmount
-                .value as unknown) as string) ?? "0"
+              (item.loanRepaymentForm.loanPaymentAmount
+                .value as unknown as string) ?? "0"
             ),
           },
           loanPaymentFrequency: item.loanRepaymentForm.loanPaymentFrequency,

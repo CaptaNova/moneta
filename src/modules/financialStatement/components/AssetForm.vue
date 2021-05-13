@@ -39,6 +39,7 @@
           type="text"
           id="accountNumberField"
           placeholder="z. B. DE07123412341234123412"
+          ref="accountNumber"
           required
           v-model.trim="assetData.accountNumber"
         />
@@ -80,6 +81,7 @@ import { ListOption } from "@/common";
 import { AssetType, AssetTypeConfiguration, FinancialProduct } from "@/models";
 import { translateAssetType } from "@/utils/translateAssetType";
 import { defineComponent, PropType } from "vue";
+import { getAssetId } from "../getAssetId";
 
 export default defineComponent({
   name: "AssetForm",
@@ -88,6 +90,11 @@ export default defineComponent({
     asset: {
       type: Object as PropType<FinancialProduct>,
       required: true,
+    },
+
+    assetIds: {
+      type: Array as PropType<Array<string>>,
+      default: (): Array<string> => [],
     },
 
     primaryButtonText: {
@@ -108,7 +115,7 @@ export default defineComponent({
         provider: this.asset.provider?.name ?? "",
         savingsRate:
           this.asset.loanRepaymentForm?.loanPaymentAmount.value ||
-          ((undefined as unknown) as number),
+          (undefined as unknown as number),
         type: this.asset.serviceType,
       },
     };
@@ -124,6 +131,14 @@ export default defineComponent({
           })
         )
         .sort((a: ListOption, b: ListOption) => a.label.localeCompare(b.label));
+    },
+  },
+
+  watch: {
+    "assetData.accountNumber": {
+      handler(newVal: string): void {
+        this.validateAccountNumber(newVal);
+      },
     },
   },
 
@@ -153,13 +168,24 @@ export default defineComponent({
         provider: this.assetData.provider
           ? { name: this.assetData.provider }
           : undefined,
-        serviceType: (this.assetData.type as unknown) as AssetType,
+        serviceType: this.assetData.type as unknown as AssetType,
       };
 
       this.$emit("submit", newAsset);
     },
 
     translateAssetType,
+
+    validateAccountNumber(accountNumber: string): void {
+      // see https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
+      const assetId = getAssetId(accountNumber);
+      const customValidationMessage = this.assetIds.includes(assetId)
+        ? "Diese Kontonummer ist bereits in Verwendung."
+        : "";
+      (this.$refs.accountNumber as HTMLInputElement).setCustomValidity(
+        customValidationMessage
+      );
+    },
   },
 });
 </script>
