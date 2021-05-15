@@ -1,3 +1,6 @@
 export function getAssetId(identifier: string): string {
-  return identifier.replaceAll(" ", "").toLowerCase();
+  return identifier
+    .replaceAll(/\s/gi, "")
+    .replaceAll(/[^\w-]/gi, "_")
+    .toLowerCase();
 }
