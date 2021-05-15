@@ -11,7 +11,7 @@ export const AssetTypeConfiguration: Record<
     translation: { de: "Banksparplan" },
   },
   Bond: {
-    assetClass: { din77230: AssetClassDin77230.Other },
+    assetClass: { din77230: AssetClassDin77230.Capital },
     translation: { de: "Anleihe" },
   },
   BondFund: {
