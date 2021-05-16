@@ -1,54 +1,59 @@
 <template>
-  <h3>Aktiva</h3>
+  <TheHeader
+    text="Vermögensbilanz"
+    :showDownload="true"
+    @download="onDownload"
+  />
   <template v-if="hasAssets">
-    <AssetList
-      :assets="getAssetsForAssetClass(AssetClassDin77230.Cash)"
-      title="Barvermögen"
-    />
-    <AssetList
-      :assets="getAssetsForAssetClass(AssetClassDin77230.Capital)"
-      title="Kapitalanlagen"
-    />
-    <AssetList
-      :assets="getAssetsForAssetClass(AssetClassDin77230.RealEstate)"
-      title="Immobilienvermögen"
-    />
-    <AssetList
-      :assets="getAssetsForAssetClass(AssetClassDin77230.Other)"
-      title="Sonstige Vermögenswerte"
-    />
-    <AssetList
-      :assets="getAssetsForAssetClass(AssetClassDin77230.NonBalanceable)"
-      title="Nicht bilanzierbare Positionen"
-    />
-    <AssetListSummary :assets="accountList" title="Bruttovermögen" />
+    <main>
+      <div class="net-assets">
+        <h3>
+          <strong>{{ netAssetsFormatted }}</strong> EUR
+        </h3>
+      </div>
+      <AssetList
+        :assets="getAssetsForAssetClass(AssetClassDin77230.Cash)"
+        title="Barvermögen"
+      />
+      <AssetList
+        :assets="getAssetsForAssetClass(AssetClassDin77230.Capital)"
+        title="Kapitalanlagen"
+      />
+      <AssetList
+        :assets="getAssetsForAssetClass(AssetClassDin77230.RealEstate)"
+        title="Immobilienvermögen"
+      />
+      <AssetList
+        :assets="getAssetsForAssetClass(AssetClassDin77230.Other)"
+        title="Sonstige Vermögenswerte"
+      />
+      <AssetList
+        :assets="getAssetsForAssetClass(AssetClassDin77230.NonBalanceable)"
+        title="Nicht bilanzierbare Positionen"
+      />
+      <div class="floating-button">
+        <span @click.prevent="onAddButtonClick">+</span>
+      </div>
+    </main>
   </template>
   <template v-else>
-    <div class="container no-asset">Du hast noch keine Anlagen angelegt.</div>
+    <main class="no-assets">
+      <AssetNoAssets />
+    </main>
   </template>
-
-  <div class="actions">
-    <button
-      class="button button-outline add-button"
-      @click.prevent="onAddButtonClick"
-    >
-      Neue Anlage hinzufügen
-    </button>
-  </div>
-  <div class="actions">
-    <UploadButton />
-    &nbsp;
-    <DownloadButton />
-  </div>
 </template>
 
 <script lang="ts">
-import DownloadButton from "@/common/components/DownloadButton.vue";
-import UploadButton from "@/common/components/UploadButton.vue";
-import { AssetType, AssetTypeConfiguration, FinancialProduct } from "@/models";
-import { AssetClassDin77230 } from "@/models/AssetClass";
+import TheHeader from "@/common/components/TheHeader.vue";
+import {
+  AssetClassDin77230,
+  AssetType,
+  AssetTypeConfiguration,
+  FinancialProduct,
+} from "@/models";
 import AssetList from "@/modules/financialStatement/components/AssetList.vue";
-import AssetListSummary from "@/modules/financialStatement/components/AssetListSummary.vue";
+import AssetNoAssets from "@/modules/financialStatement/components/AssetNoAssets.vue";
+import { createDownloadFile } from "@/utils";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 
@@ -57,9 +62,8 @@ export default defineComponent({
 
   components: {
     AssetList,
-    AssetListSummary,
-    DownloadButton,
-    UploadButton,
+    AssetNoAssets,
+    TheHeader,
   },
 
   data() {
@@ -73,6 +77,19 @@ export default defineComponent({
 
     hasAssets(): boolean {
       return this.accountList.length > 0;
+    },
+
+    netAssets(): number {
+      const reducer = (accumulator: number, currentValue: FinancialProduct) =>
+        accumulator + currentValue.amount.value;
+
+      return this.accountList.reduce(reducer, 0);
+    },
+
+    netAssetsFormatted(): string {
+      return Number(this.netAssets).toLocaleString("de", {
+        maximumFractionDigits: 0,
+      });
     },
   },
 
@@ -91,26 +108,65 @@ export default defineComponent({
     onAddButtonClick() {
       this.$router.push("/financial-statement/asset/add");
     },
+
+    onDownload(): void {
+      // see https://medium.com/js-dojo/force-file-download-in-vuejs-using-axios-a7fe1b5dfe7b
+      const data = createDownloadFile(this.accountList);
+
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(new Blob([data]));
+      link.download = this.createDownloadFileName();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    },
+
+    createDownloadFileName(): string {
+      const date = new Date().toISOString().substring(0, 10).replace(/-/g, "");
+      return `Moneta-Vermögensbilanz-${date}.json`;
+    },
   },
 });
 </script>
 
 <style lang="scss" scoped>
-.actions {
-  margin-top: 3rem;
-}
-.add-button {
-  background-color: rgba(155, 77, 202, 0.15);
-  // color: #9b4dca;
-  width: 100%;
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: calc(6rem + 1rem);
+  padding-bottom: 5rem;
 
-  &:hover {
-    background-color: rgba(96, 108, 118, 0.15);
+  &.no-assets {
+    justify-content: center;
+    margin-top: -5rem;
   }
 }
-.no-asset {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  text-align: center;
+
+.floating-button {
+  background-color: #9b4dca;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 5rem;
+  width: 5rem;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2;
+
+  span {
+    color: white;
+    font-size: 3rem;
+  }
+}
+
+.net-assets {
+  color: #9b4dca;
+  font-size: 2rem;
 }
 </style>

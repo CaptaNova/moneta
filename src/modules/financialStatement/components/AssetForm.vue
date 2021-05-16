@@ -1,85 +1,79 @@
 <template>
-  <div class="container">
-    <form autocomplete="off" @submit.prevent="onFormSubmit">
-      <fieldset>
-        <!-- name -->
-        <label for="nameField">Bezeichnung</label>
-        <input
-          type="text"
-          id="nameField"
-          placeholder="z. B. Meine eiserne Reserve"
-          required
-          v-model.trim="assetData.name"
-        />
-        <!-- type -->
-        <label for="typeField">Art</label>
-        <select id="typeField" required v-model="assetData.type">
-          <option disabled value="">Bitte auswählen</option>
-          <option
-            v-for="assetType of assetTypes"
-            :key="assetType.value"
-            :value="assetType.value"
-          >
-            {{ assetType.label }}
-          </option>
-        </select>
-        <!-- financial institution -->
-        <label for="providerField">Kreditinstitut <em>(optional)</em></label>
-        <input
-          type="text"
-          id="providerField"
-          placeholder="z. B. Deutsche Bank"
-          v-model.trim="assetData.provider"
-        />
-        <!-- account number -->
-        <label for="accountNumberField"
-          >Kontonummer (IBAN, ISIN, Vertragsnummer)</label
+  <form autocomplete="off" @submit.prevent="onFormSubmit">
+    <fieldset>
+      <!-- name -->
+      <label for="nameField">Bezeichnung</label>
+      <input
+        type="text"
+        id="nameField"
+        placeholder="z. B. Meine eiserne Reserve"
+        required
+        v-model.trim="assetData.name"
+      />
+      <!-- type -->
+      <label for="typeField">Art</label>
+      <select id="typeField" required v-model="assetData.type">
+        <option disabled value="">Bitte auswählen</option>
+        <option
+          v-for="assetType of assetTypes"
+          :key="assetType.value"
+          :value="assetType.value"
         >
-        <input
-          type="text"
-          id="accountNumberField"
-          placeholder="z. B. DE07123412341234123412"
-          ref="accountNumber"
-          required
-          v-model.trim="assetData.accountNumber"
-        />
-        <!-- amount -->
-        <label for="amountField">Betrag</label>
-        <input
-          type="number"
-          id="amountField"
-          placeholder="z. B. 2300"
-          required
-          v-model.number="assetData.amount"
-        />
-        <!-- savings rate -->
-        <label for="savingsRateField"
-          >monatliche Sparrate <em>(optional)</em></label
-        >
-        <input
-          type="number"
-          id="savingsRateField"
-          placeholder="z. B. 50"
-          v-model.number="assetData.savingsRate"
-        />
-        <!-- notes -->
-        <label for="notesField">Notizen <em>(optional)</em></label>
-        <textarea id="notesField" v-model.trim="assetData.notes"></textarea>
-        <!-- actions -->
-        <button type="submit" class="button">{{ primaryButtonText }}</button>
-        &nbsp;
-        <button type="button" class="button-outline" @click="onAbort">
-          Abbrechen
-        </button>
-      </fieldset>
-    </form>
-  </div>
+          {{ assetType.label }}
+        </option>
+      </select>
+      <!-- financial institution -->
+      <label for="providerField">Kreditinstitut <em>(optional)</em></label>
+      <input
+        type="text"
+        id="providerField"
+        placeholder="z. B. Deutsche Bank"
+        v-model.trim="assetData.provider"
+      />
+      <!-- account number -->
+      <label for="accountNumberField"
+        >Kontonummer (IBAN, ISIN, Vertragsnummer)</label
+      >
+      <input
+        type="text"
+        id="accountNumberField"
+        placeholder="z. B. DE07123412341234123412"
+        ref="accountNumber"
+        required
+        v-model.trim="assetData.accountNumber"
+      />
+      <!-- amount -->
+      <label for="amountField">Betrag</label>
+      <input
+        type="number"
+        id="amountField"
+        placeholder="z. B. 2300"
+        required
+        v-model.number="assetData.amount"
+      />
+      <!-- savings rate -->
+      <label for="savingsRateField"
+        >monatliche Sparrate <em>(optional)</em></label
+      >
+      <input
+        type="number"
+        id="savingsRateField"
+        placeholder="z. B. 50"
+        v-model.number="assetData.savingsRate"
+      />
+      <!-- notes -->
+      <label for="notesField">Notizen <em>(optional)</em></label>
+      <textarea id="notesField" v-model.trim="assetData.notes"></textarea>
+      <!-- actions -->
+      <button type="submit" class="button">{{ primaryButtonText }}</button>
+    </fieldset>
+  </form>
 </template>
 
 <script lang="ts">
 import { ListOption } from "@/common";
 import { AssetType, AssetTypeConfiguration, FinancialProduct } from "@/models";
-import { translateAssetType } from "@/utils/translateAssetType";
+import { translateAssetType } from "@/utils";
 import { defineComponent, PropType } from "vue";
 import { getAssetId } from "../getAssetId";
 
@@ -103,7 +97,7 @@ export default defineComponent({
     },
   },
 
-  emits: ["abort", "submit"],
+  emits: ["submit"],
 
   data() {
     return {
@@ -143,10 +137,6 @@ export default defineComponent({
   },
 
   methods: {
-    onAbort() {
-      this.$emit("abort");
-    },
-
     onFormSubmit() {
       const newAsset: FinancialProduct = {
         amount: {
@@ -189,3 +179,26 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+form {
+  padding: 0 2rem;
+  text-align: left;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.button {
+  width: 100%;
+}
+</style>

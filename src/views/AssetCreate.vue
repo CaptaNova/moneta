@@ -1,150 +1,63 @@
 <template>
-  <h3>Neue Anlage</h3>
-  <div class="container">
-    <form autocomplete="off" @submit.prevent="onFormSubmit">
-      <fieldset>
-        <!-- name -->
-        <label for="nameField">Bezeichnung</label>
-        <input
-          type="text"
-          id="nameField"
-          placeholder="z. B. Meine eiserne Reserve"
-          required
-          v-model.trim="asset.name"
-        />
-        <!-- type -->
-        <label for="typeField">Art</label>
-        <select id="typeField" required v-model="asset.type">
-          <option disabled value="">Bitte auswählen</option>
-          <option
-            v-for="assetType of assetTypes"
-            :key="assetType.value"
-            :value="assetType.value"
-          >
-            {{ assetType.label }}
-          </option>
-        </select>
-        <!-- financial institution -->
-        <label for="providerField">Kreditinstitut <em>(optional)</em></label>
-        <input
-          type="text"
-          id="providerField"
-          placeholder="z. B. Deutsche Bank"
-          v-model.trim="asset.provider"
-        />
-        <!-- account number -->
-        <label for="accountNumberField"
-          >Kontonummer (IBAN, ISIN, Vertragsnummer)</label
-        >
-        <input
-          type="text"
-          id="accountNumberField"
-          placeholder="z. B. DE07123412341234123412"
-          required
-          v-model.trim="asset.accountNumber"
-        />
-        <!-- amount -->
-        <label for="amountField">Betrag</label>
-        <input
-          type="number"
-          id="amountField"
-          placeholder="z. B. 2300"
-          required
-          v-model.number="asset.amount"
-        />
-        <!-- savings rate -->
-        <label for="savingsRateField"
-          >monatliche Sparrate <em>(optional)</em></label
-        >
-        <input
-          type="number"
-          id="savingsRateField"
-          placeholder="z. B. 50"
-          v-model.number="asset.savingsRate"
-        />
-        <!-- notes -->
-        <label for="notesField">Notizen <em>(optional)</em></label>
-        <textarea id="notesField" v-model.trim="asset.description"></textarea>
-        <!-- actions -->
-        <button type="submit" class="button">Anlage hinzufügen</button>
-        &nbsp;
-        <button type="button" class="button-outline" @click.prevent="onAbort">
-          Abbrechen
-        </button>
-      </fieldset>
-    </form>
-  </div>
+  <TheHeader text="Neue Anlage" :showBack="true" @back="onBack" />
+  <main>
+    <AssetForm
+      :asset="createEmptyAsset()"
+      :assetIds="usedAssetIds"
+      primaryButtonText="Anlage hinzufügen"
+      @submit="onSubmit"
+    />
+  </main>
 </template>
 
 <script lang="ts">
-import { ListOption } from "@/common";
-import { AssetType, AssetTypeConfiguration, FinancialProduct } from "@/models";
-import { translateAssetType } from "@/utils/translateAssetType";
+import TheHeader from "@/common/components/TheHeader.vue";
+import { FinancialProduct } from "@/models";
+import { getAssetId } from "@/modules/financialStatement";
+import AssetForm from "@/modules/financialStatement/components/AssetForm.vue";
+import { createEmptyAsset } from "@/utils";
 import { defineComponent } from "vue";
 import { mapActions } from "vuex";
 
 export default defineComponent({
   name: "AssetCreate",
 
-  data() {
-    return {
-      asset: {
-        accountNumber: "",
-        amount: undefined as unknown as number,
-        description: "",
-        name: "",
-        provider: "",
-        savingsRate: undefined as unknown as number,
-        type: "",
-      },
-    };
+  components: {
+    AssetForm,
+    TheHeader,
   },
 
   computed: {
-    assetTypes(): ListOption[] {
-      return Object.keys(AssetTypeConfiguration)
-        .map(
-          (assetType: string): ListOption => ({
-            label: translateAssetType(assetType as AssetType, "de"),
-            value: assetType,
-          })
-        )
-        .sort((a: ListOption, b: ListOption) => a.label.localeCompare(b.label));
+    usedAssetIds(): Array<string> {
+      return this.$store.state.FinancialStatementModule.accounts.map(
+        (asset: FinancialProduct) => getAssetId(asset.identifier)
+      );
     },
   },
 
   methods: {
     ...mapActions(["addAsset"]),
-    onAbort() {
+
+    createEmptyAsset,
+
+    leave(): void {
       this.$router.push("/financial-statement");
     },
-    onFormSubmit() {
-      const newAsset: FinancialProduct = {
-        amount: {
-          currency: "EUR",
-          value: this.asset.amount,
-        },
-        description: this.asset.description || undefined,
-        identifier: this.asset.accountNumber,
-        loanRepaymentForm: this.asset.savingsRate
-          ? {
-              loanPaymentAmount: {
-                currency: "EUR",
-                value: this.asset.savingsRate,
-              },
-              loanPaymentFrequency: 1, // monthly
-            }
-          : undefined,
-        name: this.asset.name,
-        provider: this.asset.provider
-          ? { name: this.asset.provider }
-          : undefined,
-        serviceType: this.asset.type as unknown as AssetType,
-      };
-      this.addAsset(newAsset);
-      this.$router.push("/financial-statement");
+
+    onBack(): void {
+      this.leave();
     },
-    translateAssetType,
+
+    onSubmit(newAsset: FinancialProduct): void {
+      this.addAsset(newAsset).then(() => this.leave());
+    },
   },
 });
 </script>
+
+<style lang="scss" scoped>
+main {
+  padding-top: calc(6rem + 1rem);
+  text-align: left;
+}
+</style>

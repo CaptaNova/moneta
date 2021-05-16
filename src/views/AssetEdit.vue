@@ -1,15 +1,17 @@
 <template>
-  <h3>Anlage bearbeiten</h3>
-  <AssetForm
-    :asset="getAsset()"
-    :assetIds="usedAssetIds"
-    primaryButtonText="Speichern"
-    @abort="onAbort"
-    @submit="onSubmit"
-  />
+  <TheHeader text="Anlage bearbeiten" :showBack="true" @back="onBack" />
+  <main>
+    <AssetForm
+      :asset="getAsset()"
+      :assetIds="usedAssetIds"
+      primaryButtonText="Speichern"
+      @submit="onSubmit"
+    />
+  </main>
 </template>
 
 <script lang="ts">
+import TheHeader from "@/common/components/TheHeader.vue";
 import { FinancialProduct } from "@/models";
 import { getAssetId } from "@/modules/financialStatement";
 import AssetForm from "@/modules/financialStatement/components/AssetForm.vue";
@@ -21,6 +23,7 @@ export default defineComponent({
 
   components: {
     AssetForm,
+    TheHeader,
   },
 
   computed: {
@@ -46,7 +49,7 @@ export default defineComponent({
       this.$router.push("/financial-statement");
     },
 
-    onAbort(): void {
+    onBack(): void {
       this.leave();
     },
 
@@ -59,3 +62,10 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+main {
+  padding-top: calc(6rem + 1rem);
+  text-align: left;
+}
+</style>

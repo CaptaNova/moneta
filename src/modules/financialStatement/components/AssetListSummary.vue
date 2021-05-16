@@ -1,22 +1,12 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="column title">{{ title }}</div>
-      <div
-        class="column column-offset-50 total"
-        :class="{
-          positive: total >= 0,
-          negative: total < 0,
-        }"
-      >
-        {{ total.toFixed(2) }} EUR
-      </div>
-    </div>
+  <div class="summary">
+    <span class="title">{{ title }}</span>
+    <span class="amount">{{ totalFormatted }} EUR</span>
   </div>
 </template>
 
 <script lang="ts">
-import { FinancialProduct } from "@/models/FinancialProduct";
+import { FinancialProduct } from "@/models";
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
@@ -41,28 +31,22 @@ export default defineComponent({
 
       return this.assets.reduce(reducer, 0);
     },
+
+    totalFormatted(): string {
+      return Number(this.total).toLocaleString("de", {
+        maximumFractionDigits: 0,
+      });
+    },
   },
 });
 </script>
 
 <style lang="scss" scoped>
-.container {
-  border-top: 0.1rem solid #9b4dca;
-  max-width: 120rem;
-  padding: 1.2rem 4rem 1.2rem 0;
+.summary {
+  padding-bottom: 1rem;
 }
+
 .title {
   font-weight: 700;
-}
-.total {
-  font-weight: 700;
-  text-align: right;
-
-  &.negative {
-    color: firebrick;
-  }
-  &.positive {
-    color: forestgreen;
-  }
 }
 </style>

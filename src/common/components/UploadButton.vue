@@ -1,21 +1,25 @@
 <template>
   <input ref="fileInput" type="file" accept=".json" @change="upload" />
   <button class="button button-outline" @click.prevent="onUpload">
-    Upload
+    {{ text }}
   </button>
 </template>
 
 <script lang="ts">
+import { Document } from "@/models";
+import { parseAssets, validateDocumentSchema } from "@/utils";
 import { defineComponent } from "vue";
-import { mapActions, mapGetters } from "vuex";
-import { Document } from "@/models/Document";
-import { parseAssets } from "@/utils/parseAssets";
-import { validateDocumentSchema } from "@/utils/validateDocumentSchema";
+import { mapActions } from "vuex";
 
 export default defineComponent({
   name: "UploadButton",
 
-  computed: mapGetters(["accountList"]),
+  props: {
+    text: {
+      type: String,
+      required: true,
+    },
+  },
 
   methods: {
     ...mapActions(["loadAccounts"]),
@@ -38,6 +42,7 @@ export default defineComponent({
         this.validateVersion(document.meta.version);
         const assets = parseAssets(document);
         this.loadAccounts(assets);
+        this.$router.push("/financial-statement");
       } catch (e: unknown) {
         window.alert(e);
       }
@@ -47,7 +52,7 @@ export default defineComponent({
       return (
         fileList !== null &&
         fileList.length === 1 &&
-        fileList[0].name.endsWith(".json")
+        fileList[0].name.toLowerCase().endsWith(".json")
       );
     },
 

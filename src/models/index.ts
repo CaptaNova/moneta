@@ -1,3 +1,4 @@
+export * from "./AssetClass";
 export * from "./AssetType";
 export * from "./AssetTypeConfiguration";
 export * from "./Currency";

@@ -1,29 +1,18 @@
 <template>
-  <div class="asset container" @click="editAsset">
-    <div class="row">
-      <div class="column name">{{ asset.name }}</div>
-      <div class="column provider">
-        {{ asset.provider && asset.provider.name ? asset.provider.name : "--" }}
-      </div>
-      <div class="column amount">
-        {{ asset.amount.value.toFixed(2) }} {{ asset.amount.currency }}
-      </div>
+  <div class="asset" @click="editAsset">
+    <div class="info">
+      <div class="name">{{ asset.name }}</div>
+      <div>{{ translateAssetType(asset.serviceType, "de") }}</div>
     </div>
-    <div class="row">
-      <div class="column serviceType">
-        {{ translateAssetType(asset.serviceType, "de") }}
-      </div>
-      <div class="column identifier">
-        {{ asset.identifier }}
-      </div>
-      <div class="column"></div>
+    <div class="amount">
+      <span>{{ amountFormatted }} EUR</span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { FinancialProduct } from "@/models/FinancialProduct";
-import { translateAssetType } from "@/utils/translateAssetType";
+import { FinancialProduct } from "@/models";
+import { translateAssetType } from "@/utils";
 import { defineComponent, PropType } from "vue";
 import { getAssetId } from "../getAssetId";
 
@@ -34,6 +23,15 @@ export default defineComponent({
     asset: {
       type: Object as PropType<FinancialProduct>,
       required: true,
+    },
+  },
+
+  computed: {
+    amountFormatted(): string {
+      const value = this.asset?.amount?.value ?? 0;
+      return Number(value).toLocaleString("de", {
+        maximumFractionDigits: 0,
+      });
     },
   },
 
@@ -50,25 +48,34 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .asset {
-  border-bottom: 0.1rem solid #e1e1e1;
-  padding: 1.2rem 0;
+  align-items: center;
+  border-top: 0.1rem solid #e1e1e1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0 1rem 2rem;
 
   &:hover {
     background-color: rgba(96, 108, 118, 0.15);
-    cursor: pointer;
   }
 }
-.actions {
-  margin-top: 3rem;
-}
+
 .amount {
-  font-weight: 700;
   text-align: right;
+  white-space: nowrap;
 }
-.name {
-  font-weight: 700;
-}
-.serviceType {
-  font-style: italic;
+
+.info {
+  font-size: 1.2rem;
+  min-width: 0; /* https://css-tricks.com/flexbox-truncated-text/ */
+  padding-right: 1rem;
+
+  .name {
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 </style>

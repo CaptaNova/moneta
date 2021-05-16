@@ -1,27 +1,28 @@
 <template>
-  <section class="container header-container">
-    <!-- TODO: logo -->
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <h1 class="title">Moneta</h1>
-    <p class="description" data-version="Currently">
-      <!-- TODO: mission statement -->
-      Basic financial analysis for private households<br />
-      <i
-        ><small>Currently v{{ version }}</small></i
-      >
-    </p>
-    <router-link class="button" to="financial-statement"
-      >Zur Vermögensbilanz</router-link
-    >
-    <!-- TODO: introduction -->
-  </section>
+  <main>
+    <HomeHero />
+    <HomeFunction />
+    <HomeSecurity />
+    <HomeAbout />
+  </main>
 </template>
 
 <script lang="ts">
+import HomeAbout from "@/modules/home/components/HomeAbout.vue";
+import HomeFunction from "@/modules/home/components/HomeFunction.vue";
+import HomeHero from "@/modules/home/components/HomeHero.vue";
+import HomeSecurity from "@/modules/home/components/HomeSecurity.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Home",
+
+  components: {
+    HomeAbout,
+    HomeFunction,
+    HomeHero,
+    HomeSecurity,
+  },
 
   data() {
     return {
@@ -30,11 +31,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.header-container {
-  padding-bottom: 7.5rem;
-  padding-top: 7.5rem;
-  text-align: center;
-}
-</style>
