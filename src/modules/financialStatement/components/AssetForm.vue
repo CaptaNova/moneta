@@ -186,6 +186,10 @@ form {
   text-align: left;
 }
 
+label {
+  font-size: 1.4rem;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
