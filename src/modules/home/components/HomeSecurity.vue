@@ -1,8 +1,8 @@
 <template>
   <section id="security">
-    <div class="content">
-      <h2>Sicherheit</h2>
-      <h3>Der Schutz Deiner Daten hat für uns die höchste Priorität.</h3>
+    <div class="content flex-column flex-center">
+      <h1>Sicherheit</h1>
+      <h2>Der Schutz Deiner Daten hat für uns die höchste Priorität.</h2>
       <p>
         Deine Daten gehören Dir und bleiben Dein Eigentum! Wir speichern keine
         Daten auf unseren Systemen und sammeln keine Informationen über Dich.
@@ -24,27 +24,42 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-section {
-  box-sizing: border-box;
-  height: 100vh;
-  padding: var(--padding-x);
+h1 {
+  font-size: 3.6rem;
 }
 
-#security {
-  background-color: firebrick;
+h2 {
+  font-size: 2.8rem;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+section {
+  background-color: var(--color-error);
   color: whitesmoke;
+  height: 100vh;
 }
 
 .content {
-  margin-top: var(--padding-x);
+  height: 100%;
+  margin: 0 auto;
+  max-width: var(--width-max);
+  padding: var(--padding-y) var(--padding-x);
+}
 
-  h3 {
-    padding-bottom: 3rem;
-    padding-top: 3rem;
+@media (min-width: 40rem) {
+  h1 {
+    font-size: 4.6rem;
+  }
+
+  h2 {
+    font-size: 3.6rem;
   }
 
   p {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }
 </style>

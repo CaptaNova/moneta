@@ -6,33 +6,35 @@
   />
   <template v-if="hasAssets">
     <main>
-      <div class="net-assets">
-        <h3>
-          <strong>{{ netAssetsFormatted }}</strong> EUR
-        </h3>
-      </div>
-      <AssetList
-        :assets="getAssetsForAssetClass(AssetClassDin77230.Cash)"
-        title="Barvermögen"
-      />
-      <AssetList
-        :assets="getAssetsForAssetClass(AssetClassDin77230.Capital)"
-        title="Kapitalanlagen"
-      />
-      <AssetList
-        :assets="getAssetsForAssetClass(AssetClassDin77230.RealEstate)"
-        title="Immobilienvermögen"
-      />
-      <AssetList
-        :assets="getAssetsForAssetClass(AssetClassDin77230.Other)"
-        title="Sonstige Vermögenswerte"
-      />
-      <AssetList
-        :assets="getAssetsForAssetClass(AssetClassDin77230.NonBalanceable)"
-        title="Nicht bilanzierbare Positionen"
-      />
-      <div class="floating-button">
-        <span @click.prevent="onAddButtonClick">+</span>
+      <div class="content flex-column">
+        <div class="net-assets">
+          <h3 title="Dein aktuelles Nettovermögen">
+            <strong>{{ netAssetsFormatted }}</strong> EUR
+          </h3>
+        </div>
+        <AssetList
+          :assets="getAssetsForAssetClass(AssetClassDin77230.Cash)"
+          title="Barvermögen"
+        />
+        <AssetList
+          :assets="getAssetsForAssetClass(AssetClassDin77230.Capital)"
+          title="Kapitalanlagen"
+        />
+        <AssetList
+          :assets="getAssetsForAssetClass(AssetClassDin77230.RealEstate)"
+          title="Immobilienvermögen"
+        />
+        <AssetList
+          :assets="getAssetsForAssetClass(AssetClassDin77230.Other)"
+          title="Sonstige Vermögenswerte"
+        />
+        <AssetList
+          :assets="getAssetsForAssetClass(AssetClassDin77230.NonBalanceable)"
+          title="Nicht bilanzierbare Positionen"
+        />
+        <div class="floating-button" title="Neue Anlage">
+          <span @click.prevent="onAddButtonClick">+</span>
+        </div>
       </div>
     </main>
   </template>
@@ -130,17 +132,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-main {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.content {
+  margin: 0 auto;
+  max-width: var(--width-max);
+  padding-bottom: calc(1.5 * var(--padding-x));
   padding-top: calc(6rem + 1rem);
-  padding-bottom: 5rem;
-
-  &.no-assets {
-    justify-content: center;
-    margin-top: -5rem;
-  }
 }
 
 .floating-button {

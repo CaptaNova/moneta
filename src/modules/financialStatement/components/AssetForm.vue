@@ -182,6 +182,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 form {
+  margin: 0 auto;
+  max-width: var(--width-max);
   padding: 0 var(--padding-x);
   text-align: left;
 }

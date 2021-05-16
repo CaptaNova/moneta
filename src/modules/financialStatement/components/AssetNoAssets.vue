@@ -1,15 +1,17 @@
 <template>
   <section class="no-asset">
-    <h3>Arm wie eine Kirchenmaus?</h3>
-    <p>Das glaube ich Dir nicht! 😉</p>
-    <p>
-      Füge Deine Anlagen hinzu. Ich empfehle Dir mir Deinem Girokonto
-      anzufangen.
-    </p>
-    <div>
-      <router-link class="button" to="/financial-statement/asset/add"
-        >Neue Anlage hinzufügen</router-link
-      >
+    <div class="content flex-column flex-center">
+      <h1>Arm wie eine Kirchenmaus?</h1>
+      <p>Das glaube ich Dir nicht! 😉</p>
+      <p>
+        Füge Deine Anlagen hinzu. Ich empfehle Dir mir Deinem Girokonto
+        anzufangen.
+      </p>
+      <div class="actions">
+        <router-link class="button" to="/financial-statement/asset/add"
+          >Neue Anlage hinzufügen</router-link
+        >
+      </div>
     </div>
   </section>
 </template>
@@ -23,17 +25,37 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.add-button {
-  background-color: rgba(155, 77, 202, 0.15);
-  width: 100%;
-
-  &:hover {
-    background-color: rgba(96, 108, 118, 0.15);
-  }
+h1 {
+  font-size: 3.6rem;
+  margin-bottom: var(--padding-x);
 }
 
-.no-asset {
-  padding: 0 var(--padding-x);
-  text-align: center;
+p {
+  font-size: 1.8rem;
+}
+
+section {
+  height: 100vh;
+}
+
+.actions {
+  margin-top: var(--padding-x);
+}
+
+.content {
+  height: 100%;
+  margin: 0 auto;
+  max-width: var(--width-max);
+  padding: var(--padding-y) var(--padding-x);
+}
+
+@media (min-width: 40rem) {
+  h1 {
+    font-size: 4.6rem;
+  }
+
+  p {
+    font-size: 2.2rem;
+  }
 }
 </style>

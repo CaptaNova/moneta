@@ -49,9 +49,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 section {
-  margin-top: var(--padding-x);
   border-top: 0.1rem solid var(--color-primary);
-  padding: var(--padding-x);
+  margin-top: var(--padding-y);
+  padding: var(--padding-y) var(--padding-x);
   text-align: left;
 }
 

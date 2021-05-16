@@ -49,4 +49,10 @@ export default defineComponent({
 .title {
   font-weight: var(--font-weight-bold);
 }
+
+@media (min-width: 40rem) {
+  .summary {
+    font-size: 1.8rem;
+  }
+}
 </style>

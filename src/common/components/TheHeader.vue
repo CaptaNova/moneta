@@ -2,6 +2,7 @@
   <header>
     <div
       class="back-action"
+      title="Zurück"
       :class="{ clickable: showBack }"
       @click.prevent="onBack"
     >
@@ -10,6 +11,7 @@
     <span>{{ text }}</span>
     <div
       class="download-action"
+      title="Analyse herunterladen"
       :class="{ clickable: showDownload }"
       @click.prevent="onDownload"
     >
@@ -63,10 +65,9 @@ export default defineComponent({
 header {
   background-color: white;
   box-shadow: 0 0 1rem 0 white;
-  box-sizing: border-box;
   font-weight: var(--font-weight-bold);
   height: 6.2rem;
-  padding: var(--padding-x);
+  padding: var(--padding-y) var(--padding-x);
   z-index: var(--z-index-header);
 
   display: flex;

@@ -1,21 +1,27 @@
 <template>
   <section id="hero">
-    <div class="content">
-      <h2>Bist Du reich?</h2>
-      <p>
-        Weißt Du wieviel Vermögen Du besitzt und wie es verteilt ist?<br />
-        Finde es jetzt heraus!
-      </p>
+    <div class="content flex-column flex-center">
+      <h1>Bist Du reich?</h1>
       <div class="start-review">
-        <router-link class="button" to="/financial-statement"
-          >Analyse starten</router-link
-        >
+        <p>
+          Weißt Du wieviel Vermögen Du besitzt und wie es verteilt ist?<br />
+          Finde es jetzt heraus!
+        </p>
+        <div>
+          <router-link class="button" to="/financial-statement"
+            >Analyse starten</router-link
+          >
+        </div>
       </div>
       <div class="resume-review">
+        <p>
+          Du hast schon eine Analyse und möchtest diese anschauen oder
+          aktualisieren?
+        </p>
         <UploadButton text="Analyse aktualisieren" />
       </div>
       <div class="more-information">
-        <a href="#function">Mehr erfahren ...</a>
+        <a href="#function" class="button button-clear">Mehr erfahren ...</a>
       </div>
     </div>
   </section>
@@ -35,41 +41,43 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  color: var(--color-primary);
+  font-size: 3.6rem;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
 section {
-  box-sizing: border-box;
   height: 100vh;
-  padding: var(--padding-x);
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10rem;
-  text-align: left;
-
-  a {
-    align-self: center;
-  }
-
-  h2 {
-    color: var(--color-primary);
-  }
-
-  p {
-    font-size: 2rem;
-  }
+  height: 100%;
+  margin: 0 auto;
+  max-width: var(--width-max);
+  padding: var(--padding-y) var(--padding-x);
 }
 
 .resume-review,
 .start-review {
-  margin-top: var(--padding-x);
+  margin-bottom: 4rem;
 }
 
-.more-information {
-  margin-top: 4rem;
+@media (min-width: 40rem) {
+  h1 {
+    font-size: 4.6rem;
+  }
 
-  a {
-    font-weight: var(--font-weight-bold);
+  p {
+    font-size: 2.2rem;
+  }
+
+  .resume-review,
+  .start-review {
+    margin-bottom: 6rem;
   }
 }
 </style>

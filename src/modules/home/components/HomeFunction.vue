@@ -1,10 +1,12 @@
 <template>
   <section id="function">
     <div class="content">
-      <h2>Funktionen</h2>
-      <h3>Kapitalanlagen</h3>
-      <p>Übersicht über Deine Konten und Depots.</p>
-      <p>Übersicht über Deine Lebens- und Rentenversicherungen.</p>
+      <h1>Funktionen</h1>
+      <h2>Kapitalanlagen</h2>
+      <ul>
+        <li>Übersicht über Deine Konten und Depots.</li>
+        <li>Übersicht über Deine Lebens- und Rentenversicherungen.</li>
+      </ul>
     </div>
   </section>
 </template>
@@ -18,10 +20,23 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  font-size: 3.6rem;
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+
+ul {
+  font-size: 1.8rem;
+  list-style-type: none;
+  padding: var(--padding-y) var(--padding-x);
+  text-align: left;
+}
+
 section {
-  box-sizing: border-box;
   height: 100vh;
-  padding: var(--padding-x);
 }
 
 #function {
@@ -29,15 +44,23 @@ section {
 }
 
 .content {
+  margin: 0 auto;
   margin-top: var(--padding-x);
+  max-width: var(--width-max);
+  padding: var(--padding-y) var(--padding-x);
+}
 
-  h3 {
-    padding-bottom: 3rem;
-    padding-top: 3rem;
+@media (min-width: 40rem) {
+  h1 {
+    font-size: 4.6rem;
   }
 
-  p {
-    font-size: 2rem;
+  h2 {
+    font-size: 3.6rem;
+  }
+
+  ul {
+    font-size: 2.2rem;
   }
 }
 </style>

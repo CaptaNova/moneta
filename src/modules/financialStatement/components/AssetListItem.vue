@@ -74,9 +74,19 @@ export default defineComponent({
 
   .name {
     font-weight: var(--font-weight-bold);
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 40rem) {
+  .amount {
+    font-size: 1.8rem;
+  }
+
+  .info {
+    font-size: 1.6rem;
   }
 }
 </style>
