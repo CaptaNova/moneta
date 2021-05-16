@@ -27,7 +27,7 @@ export default defineComponent({
 section {
   box-sizing: border-box;
   height: 100vh;
-  padding: 2rem;
+  padding: var(--padding-x);
 }
 
 #security {
@@ -36,7 +36,7 @@ section {
 }
 
 .content {
-  margin-top: 2rem;
+  margin-top: var(--padding-x);
 
   h3 {
     padding-bottom: 3rem;

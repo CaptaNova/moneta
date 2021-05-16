@@ -49,9 +49,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 section {
-  margin-top: 2rem;
-  border-top: 0.1rem solid #9b4dca;
-  padding: 2rem;
+  margin-top: var(--padding-x);
+  border-top: 0.1rem solid var(--color-primary);
+  padding: var(--padding-x);
   text-align: left;
 }
 
@@ -61,8 +61,8 @@ section {
   justify-content: space-between;
 
   .title {
-    color: #9b4dca;
-    font-weight: 700;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
   }
 }
 </style>

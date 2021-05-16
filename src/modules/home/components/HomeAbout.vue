@@ -42,11 +42,11 @@ export default defineComponent({
 section {
   box-sizing: border-box;
   height: 100vh;
-  padding: 2rem;
+  padding: var(--padding-x);
 }
 
 .content {
-  margin-top: 2rem;
+  margin-top: var(--padding-x);
   text-align: left;
 
   h2 {

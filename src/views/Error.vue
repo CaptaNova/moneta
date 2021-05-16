@@ -29,7 +29,7 @@ main {
 }
 
 .content {
-  padding: 2rem;
+  padding: var(--padding-x);
 
   p {
     font-size: 2rem;

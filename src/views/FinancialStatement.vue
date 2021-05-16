@@ -144,7 +144,7 @@ main {
 }
 
 .floating-button {
-  background-color: #9b4dca;
+  background-color: var(--color-primary);
   border-radius: 50%;
   cursor: pointer;
   height: 5rem;
@@ -155,9 +155,9 @@ main {
   justify-content: center;
 
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 2;
+  bottom: var(--padding-x);
+  right: var(--padding-x);
+  z-index: var(--z-index-header);
 
   span {
     color: white;
@@ -166,7 +166,7 @@ main {
 }
 
 .net-assets {
-  color: #9b4dca;
+  color: var(--color-primary);
   font-size: 2rem;
 }
 </style>

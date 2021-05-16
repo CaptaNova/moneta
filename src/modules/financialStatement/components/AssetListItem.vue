@@ -48,13 +48,14 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .asset {
-  align-items: center;
   border-top: 0.1rem solid #e1e1e1;
   cursor: pointer;
+  padding: 1rem 0 1rem var(--padding-x);
+
   display: flex;
+  align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1rem 0 1rem 2rem;
 
   &:hover {
     background-color: rgba(96, 108, 118, 0.15);
@@ -72,7 +73,7 @@ export default defineComponent({
   padding-right: 1rem;
 
   .name {
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

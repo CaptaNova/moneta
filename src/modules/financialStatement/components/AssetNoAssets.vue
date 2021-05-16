@@ -33,7 +33,7 @@ export default defineComponent({
 }
 
 .no-asset {
-  padding: 0 2rem;
+  padding: 0 var(--padding-x);
   text-align: center;
 }
 </style>

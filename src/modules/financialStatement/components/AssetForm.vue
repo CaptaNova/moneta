@@ -182,7 +182,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 form {
-  padding: 0 2rem;
+  padding: 0 var(--padding-x);
   text-align: left;
 }
 

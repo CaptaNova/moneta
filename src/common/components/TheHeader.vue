@@ -62,11 +62,12 @@ export default defineComponent({
 <style lang="scss" scoped>
 header {
   background-color: white;
+  box-shadow: 0 0 1rem 0 white;
   box-sizing: border-box;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   height: 6.2rem;
-  padding: 2rem;
-  z-index: 2;
+  padding: var(--padding-x);
+  z-index: var(--z-index-header);
 
   display: flex;
   flex-flow: row nowrap;
@@ -81,7 +82,7 @@ header {
 .back-action,
 .download-action {
   display: inline-block;
-  width: 2rem;
+  width: var(--padding-x);
 }
 
 .clickable {

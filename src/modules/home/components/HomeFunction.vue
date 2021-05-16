@@ -21,15 +21,15 @@ export default defineComponent({
 section {
   box-sizing: border-box;
   height: 100vh;
-  padding: 2rem;
+  padding: var(--padding-x);
 }
 
 #function {
-  border-top: 0.1rem solid #9b4dca;
+  border-top: 0.1rem solid var(--color-primary);
 }
 
 .content {
-  margin-top: 2rem;
+  margin-top: var(--padding-x);
 
   h3 {
     padding-bottom: 3rem;

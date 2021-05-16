@@ -38,7 +38,7 @@ export default defineComponent({
 section {
   box-sizing: border-box;
   height: 100vh;
-  padding: 2rem;
+  padding: var(--padding-x);
 }
 
 .content {
@@ -52,7 +52,7 @@ section {
   }
 
   h2 {
-    color: #9b4dca;
+    color: var(--color-primary);
   }
 
   p {
@@ -62,14 +62,14 @@ section {
 
 .resume-review,
 .start-review {
-  margin-top: 2rem;
+  margin-top: var(--padding-x);
 }
 
 .more-information {
   margin-top: 4rem;
 
   a {
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
   }
 }
 </style>

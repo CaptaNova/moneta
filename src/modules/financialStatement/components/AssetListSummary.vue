@@ -47,6 +47,6 @@ export default defineComponent({
 }
 
 .title {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 </style>
