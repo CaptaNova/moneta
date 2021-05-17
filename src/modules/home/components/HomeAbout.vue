@@ -1,31 +1,45 @@
 <template>
   <section id="about">
     <div class="content flex-column">
-      <h1>Über uns</h1>
+      <h1>Über Moneta</h1>
       <p>
-        Moneta ist ein Angebot von
-        <a href="https://www.captanova.de">CaptaNova</a>.
+        2019 wurde mit der DIN 77230 eine Norm veröffentlicht, die einen Prozess
+        für die Basis-Finanzanalyse eines Privathaushalt festlegt. Es geht dabei
+        in erster Linie darum Dir einen Überblick über Deine finanzielle
+        Situation zu verschaffen.
       </p>
-      <h3>Anschrift</h3>
       <p>
-        Christoph Nölke<br />
-        Josef-Priller-Straße 2<br />
-        86159 Augsburg
+        Damit kannst Du Finanzthemen identifizieren, die Du im Aschluss (zum
+        Beispiel im Rahmen einer Finanzberatung) genauer betrachten möchtest.
       </p>
-      <h3>Kontakt</h3>
-      <p>Wenn Du Fragen hast, erreichst Du uns per E-Mail:</p>
       <p>
-        <a href="mailto:post@christoph-noelke.de">post@christoph-noelke.de</a>
+        Unser Ziel ist es, die DIN 77230 in Moneta abzubilden um sie Dir
+        kostenfrei zur Verfügung stellen zu können. Im Moment sind wir von
+        diesem Ziel noch ein großes Stück entfernt, doch wir arbeiten daran die
+        App jeden Tag ein Stück besser zu machen.
       </p>
+      <p><strong>Moneta ist keine Finanzberatung!</strong></p>
+
       <blockquote>
         <p>
-          <a href="https://github.com/CaptaNova/moneta">Moneta</a> ist Open
-          Source und steht unter der
-          <a href="https://github.com/CaptaNova/moneta/blob/main/LICENSE"
-            >MIT Lizenz</a
-          >.
+          <small>
+            Moneta ist Open Source und steht unter der
+            <a
+              href="https://github.com/CaptaNova/moneta/blob/main/LICENSE"
+              target="_blank"
+              >MIT Lizenz</a
+            >.<br />
+            Created with &hearts; by
+            <a href="https://captanova.de" target="_blank">CaptaNova</a>.
+          </small>
         </p>
       </blockquote>
+
+      <p class="about">
+        <router-link to="about" class="button button-clear"
+          >App-Informationen</router-link
+        >
+      </p>
     </div>
   </section>
 </template>
@@ -56,9 +70,14 @@ section {
   height: 100vh;
 }
 
+.about {
+  border-top: 0.1rem solid var(--color-primary);
+  margin-top: var(--padding-y);
+  padding-top: var(--padding-y);
+  text-align: center;
+}
+
 .content {
-  height: 100%;
-  justify-content: center;
   margin: 0 auto;
   max-width: var(--width-max);
   padding: var(--padding-y) var(--padding-x);
@@ -76,6 +95,15 @@ section {
 
   p {
     font-size: 2.2rem;
+  }
+
+  .content {
+    height: 100%;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: var(--width-max);
+    padding: var(--padding-y) var(--padding-x);
+    text-align: left;
   }
 }
 </style>

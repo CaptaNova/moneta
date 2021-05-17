@@ -2,11 +2,17 @@
   "name": "moneta",
   "version": "0.1.0",
   "private": true,
+  "description": "A basic financial analysis for private households according to DIN 77230.",
+  "homepage": "https://github.com/CaptaNova/moneta#readme",
+  "bugs": "https://github.com/CaptaNova/moneta/issues",
+  "license": "MIT",
+  "author": "CaptaNova <hallo@captanova.de> (https://captanova.de)",
+  "repository": "github:CaptaNova/moneta",
   "scripts": {
-    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve": "vue-cli-service serve",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "lodash": "^4.17.21",

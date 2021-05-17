@@ -1,3 +1,5 @@
+import AboutHome from "@/modules/about/components/AboutHome.vue";
+import AboutImprint from "@/modules/about/components/AboutImprint.vue";
 import AssetCreate from "@/views/AssetCreate.vue";
 import AssetEdit from "@/views/AssetEdit.vue";
 import Error from "@/views/Error.vue";
@@ -34,6 +36,10 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    children: [
+      { path: "", name: "about", component: AboutHome },
+      { path: "imprint", name: "imprint", component: AboutImprint },
+    ],
   },
   {
     path: "/:pathMatch(.*)*",
