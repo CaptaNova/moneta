@@ -9,7 +9,7 @@
         Situation zu verschaffen.
       </p>
       <p>
-        Damit kannst Du Finanzthemen identifizieren, die Du im Aschluss (zum
+        Damit kannst Du Finanzthemen identifizieren, die Du im Anschluss (zum
         Beispiel im Rahmen einer Finanzberatung) genauer betrachten möchtest.
       </p>
       <p>
@@ -36,7 +36,7 @@
       </blockquote>
 
       <p class="about">
-        <router-link to="about" class="button button-clear"
+        <router-link to="/about" class="button button-clear"
           >App-Informationen</router-link
         >
       </p>
@@ -98,7 +98,6 @@ section {
   }
 
   .content {
-    height: 100%;
     justify-content: center;
     margin: 0 auto;
     max-width: var(--width-max);

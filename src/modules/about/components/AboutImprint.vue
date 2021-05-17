@@ -3,7 +3,7 @@
     <div class="content">
       <h2>Herausgeber</h2>
 
-      <p><a href="https://www.captanova.de">CaptaNova</a></p>
+      <p><a href="https://www.captanova.de" target="_blank">CaptaNova</a></p>
 
       <hr />
 
@@ -19,7 +19,9 @@
       <h3>Kontakt</h3>
       <p>Wenn Du Fragen hast, erreichst Du uns per E-Mail:</p>
       <p>
-        <a href="mailto:post@christoph-noelke.de">post@christoph-noelke.de</a>
+        <a href="mailto:post@christoph-noelke.de" target="_blank"
+          >post@christoph-noelke.de</a
+        >
       </p>
 
       <hr />
