@@ -1,0 +1,357 @@
+{
+  "meta": {
+    "version": "1.0"
+  },
+  "data": {
+    "assets": [
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "9638"
+        },
+        "identifier": "CH3189144721862126464",
+        "loanRepaymentForm": {
+          "@type": "RepaymentSpecification",
+          "loanPaymentAmount": {
+            "currency": "EUR",
+            "value": "253"
+          },
+          "loanPaymentFrequency": 1
+        },
+        "name": "Rürup Profi Klassik",
+        "provider": {
+          "@type": "Organization",
+          "name": "Canepa SPA"
+        },
+        "serviceType": "RuerupPension"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "1919"
+        },
+        "identifier": "US746500929",
+        "name": "Hermiston Group",
+        "serviceType": "Share"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "7340"
+        },
+        "identifier": "MX357437164",
+        "loanRepaymentForm": {
+          "@type": "RepaymentSpecification",
+          "loanPaymentAmount": {
+            "currency": "EUR",
+            "value": "320"
+          },
+          "loanPaymentFrequency": 1
+        },
+        "name": "MSCI PatentTrolls",
+        "serviceType": "StockFund"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "7955"
+        },
+        "identifier": "BR2285100805585238103090612V9",
+        "name": "Montoya S.A.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Espinosa Hermanos"
+        },
+        "serviceType": "Bond"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "2098"
+        },
+        "identifier": "MC72005798413455OGSI4064833",
+        "loanRepaymentForm": {
+          "@type": "RepaymentSpecification",
+          "loanPaymentAmount": {
+            "currency": "EUR",
+            "value": "98"
+          },
+          "loanPaymentFrequency": 1
+        },
+        "name": "JumpSave Unlimited",
+        "serviceType": "BankSavingsPlan"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "5425"
+        },
+        "identifier": "isohels/987-873-12",
+        "loanRepaymentForm": {
+          "@type": "RepaymentSpecification",
+          "loanPaymentAmount": {
+            "currency": "EUR",
+            "value": "370"
+          },
+          "loanPaymentFrequency": 1
+        },
+        "name": "Immobilia",
+        "provider": {
+          "@type": "Organization",
+          "name": "Capitol Ltd"
+        },
+        "serviceType": "ConstructionLoan"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "10451"
+        },
+        "identifier": "GE46U95528650984401717",
+        "loanRepaymentForm": {
+          "@type": "RepaymentSpecification",
+          "loanPaymentAmount": {
+            "currency": "EUR",
+            "value": "98"
+          },
+          "loanPaymentFrequency": 1
+        },
+        "name": "Rentature",
+        "provider": {
+          "@type": "Organization",
+          "name": "Колесникова"
+        },
+        "serviceType": "OccupationalPensionScheme"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "538791"
+        },
+        "identifier": "FO8830955089557019",
+        "name": "Confest Drop",
+        "serviceType": "TimeDeposit"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "8641"
+        },
+        "identifier": "BE06159143006147",
+        "name": "Everfonds",
+        "provider": {
+          "@type": "Organization",
+          "name": "Vandenberghe BVBA"
+        },
+        "serviceType": "UnitLinkedPensionInsurance"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "806"
+        },
+        "identifier": "009412673",
+        "name": "Vance Sanford",
+        "serviceType": "MoneyMarketFund"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "10334"
+        },
+        "identifier": "IT88C90010560417211W33I5707",
+        "name": "Giro d'Italia",
+        "provider": {
+          "@type": "Organization",
+          "name": "Adami e figli"
+        },
+        "serviceType": "CheckingAccount"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "7138"
+        },
+        "identifier": "19UUA566911G4ZBN4",
+        "name": "Golden Ghetto",
+        "serviceType": "RealEstateFund"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "1698"
+        },
+        "identifier": "691-16-6891",
+        "name": "Certikit",
+        "serviceType": "IndexCertificate"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "1185"
+        },
+        "identifier": "f6:fd:04:f4:d4:d9",
+        "name": "Goldesel",
+        "provider": {
+          "@type": "Organization",
+          "name": "Harris CC"
+        },
+        "serviceType": "EndowmentPolicy"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "11273"
+        },
+        "identifier": "376 349 926",
+        "name": "Mixer",
+        "serviceType": "MixedFund"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "3581"
+        },
+        "identifier": "NL22BRJL0500807684",
+        "name": "Thijs Dekker",
+        "provider": {
+          "@type": "Organization",
+          "name": "Smit Group"
+        },
+        "serviceType": "SubordinatedDebt"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "9121"
+        },
+        "identifier": "GB61YGPK24400674610097",
+        "name": "Crazy Yield Bonds",
+        "provider": {
+          "@type": "Organization",
+          "name": "Corkery Inc"
+        },
+        "serviceType": "BondFund"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "11424"
+        },
+        "identifier": "TR4709067V68960388B2H52137",
+        "loanRepaymentForm": {
+          "@type": "RepaymentSpecification",
+          "loanPaymentAmount": {
+            "currency": "EUR",
+            "value": "455"
+          },
+          "loanPaymentFrequency": 1
+        },
+        "name": "Retseir Etner",
+        "provider": {
+          "@type": "Organization",
+          "name": "Tüzün LLC"
+        },
+        "serviceType": "RiesterPension"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "6490"
+        },
+        "identifier": "168-86-5105",
+        "name": "Le gall",
+        "provider": {
+          "@type": "Organization",
+          "name": "Lefevre EURL"
+        },
+        "serviceType": "OtherAssets"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "3895"
+        },
+        "identifier": "CY7300635370PP47903O35M7790U",
+        "name": "Daily Business",
+        "serviceType": "MoneyMarketAccount"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "7463"
+        },
+        "identifier": "868598034212476",
+        "name": "Niño e Hijos",
+        "provider": {
+          "@type": "Organization",
+          "name": "Rivera S.L."
+        },
+        "serviceType": "SecuritiesAccount"
+      }
+    ]
+  }
+}

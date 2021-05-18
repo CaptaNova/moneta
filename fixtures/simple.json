@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "version": "1.0"
+  },
+  "data": {
+    "assets": [
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "433"
+        },
+        "description": "25 Stück",
+        "identifier": "DE0005557508",
+        "name": "Volksaktie",
+        "serviceType": "Share"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "1337"
+        },
+        "identifier": "NL15ABNA9287436010",
+        "name": "Gehaltskonto",
+        "provider": {
+          "@type": "Organization",
+          "name": "Meine Bank"
+        },
+        "serviceType": "CheckingAccount"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "amount": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": "1200"
+        },
+        "description": "Ab auf die einsame Insel!",
+        "identifier": "ES4121003563775969199565",
+        "loanRepaymentForm": {
+          "@type": "RepaymentSpecification",
+          "loanPaymentAmount": {
+            "currency": "EUR",
+            "value": "50"
+          },
+          "loanPaymentFrequency": 1
+        },
+        "name": "🏖 Sparen für den Urlaub",
+        "provider": {
+          "@type": "Organization",
+          "name": "Null-null-nix"
+        },
+        "serviceType": "MoneyMarketAccount"
+      }
+    ]
+  }
+}
