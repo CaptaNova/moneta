@@ -4,6 +4,7 @@ import { IRootState } from "../state";
 
 const state: IRootState = {
   accounts: [],
+  dirty: false,
 };
 
 const getters = {
@@ -19,6 +20,9 @@ const actions = {
   loadAccounts({ commit }: any, accounts: FinancialProduct[]): void {
     commit("SET_ASSETS", accounts);
   },
+  resetDirty({ commit }: any): void {
+    commit("RESET_DIRTY");
+  },
   updateAsset(
     { commit }: any,
     payload: { id: string; asset: FinancialProduct }
@@ -32,9 +36,14 @@ const actions = {
 const mutations = {
   ADD_ASSET: (state: IRootState, account: FinancialProduct): void => {
     state.accounts = [...state.accounts, account];
+    state.dirty = true;
+  },
+  RESET_DIRTY: (state: IRootState): void => {
+    state.dirty = false;
   },
   SET_ASSETS: (state: IRootState, accounts: FinancialProduct[]): void => {
     state.accounts = accounts;
+    state.dirty = false;
   },
   UPDATE_ASSET: (
     state: IRootState,
@@ -46,6 +55,7 @@ const mutations = {
       ),
       payload.asset,
     ];
+    state.dirty = true;
   },
 };
 

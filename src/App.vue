@@ -2,6 +2,27 @@
   <router-view />
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "App",
+
+  created() {
+    window.addEventListener("beforeunload", (event) => {
+      if (this.$store.state.FinancialStatementModule.dirty) {
+        const confirmationMessage =
+          "Du hast etwas geändert und die Daten noch nicht heruntergeladen. " +
+          "Wenn du die Seite verlääst, werden deine Änderungen verloren gehen.";
+        event.preventDefault();
+        event.returnValue = confirmationMessage;
+        return confirmationMessage;
+      }
+    });
+  },
+});
+</script>
+
 <style lang="scss">
 :root {
   --color-primary: #9b4dca;

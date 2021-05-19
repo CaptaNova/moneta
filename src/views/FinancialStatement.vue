@@ -57,7 +57,7 @@ import AssetList from "@/modules/financialStatement/components/AssetList.vue";
 import AssetNoAssets from "@/modules/financialStatement/components/AssetNoAssets.vue";
 import { createDownloadFile } from "@/utils";
 import { defineComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default defineComponent({
   name: "FinancialStatement",
@@ -96,6 +96,8 @@ export default defineComponent({
   },
 
   methods: {
+    ...mapActions(["resetDirty"]),
+
     getAssetsForAssetClass(assetClass: AssetClassDin77230): FinancialProduct[] {
       return this.accountList.filter(
         (asset: FinancialProduct) =>
@@ -121,6 +123,7 @@ export default defineComponent({
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      this.resetDirty();
     },
 
     createDownloadFileName(): string {
