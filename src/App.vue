@@ -28,6 +28,7 @@ export default defineComponent({
   --color-primary: #9b4dca;
   --color-error: firebrick;
   --font-weight-bold: 700;
+  --font-weight-normal: 300;
   --padding-x: 2rem;
   --padding-y: 2rem;
   --width-max: 112rem;

@@ -32,9 +32,7 @@
           :assets="getAssetsForAssetClass(AssetClassDin77230.NonBalanceable)"
           title="Nicht bilanzierbare Positionen"
         />
-        <div class="floating-button" title="Neue Anlage">
-          <span @click.prevent="onAddButtonClick">+</span>
-        </div>
+        <ButtonFloating @click="onAddButtonClick" />
       </div>
     </main>
   </template>
@@ -46,6 +44,7 @@
 </template>
 
 <script lang="ts">
+import ButtonFloating from "@/common/components/ButtonFloating.vue";
 import TheHeader from "@/common/components/TheHeader.vue";
 import {
   AssetClassDin77230,
@@ -65,6 +64,7 @@ export default defineComponent({
   components: {
     AssetList,
     AssetNoAssets,
+    ButtonFloating,
     TheHeader,
   },
 
@@ -140,28 +140,6 @@ export default defineComponent({
   max-width: var(--width-max);
   padding-bottom: calc(1.5 * var(--padding-x));
   padding-top: calc(6rem + 1rem);
-}
-
-.floating-button {
-  background-color: var(--color-primary);
-  border-radius: 50%;
-  cursor: pointer;
-  height: 5rem;
-  width: 5rem;
-
-  align-items: center;
-  display: flex;
-  justify-content: center;
-
-  position: fixed;
-  bottom: var(--padding-x);
-  right: var(--padding-x);
-  z-index: var(--z-index-header);
-
-  span {
-    color: white;
-    font-size: 3rem;
-  }
 }
 
 .net-assets {
