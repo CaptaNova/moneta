@@ -3,10 +3,13 @@
     <div
       class="back-action"
       title="Zurück"
-      :class="{ clickable: showBack }"
+      :class="{ clickable: showBack || showClose }"
       @click.prevent="onBack"
     >
-      <template v-if="showBack">⬅</template>
+      <template v-if="showBack"
+        ><img src="../../assets/arrow-left.svg"
+      /></template>
+      <template v-if="showClose"><img src="../../assets/x.svg" /></template>
     </div>
     <span>{{ text }}</span>
     <div
@@ -15,7 +18,9 @@
       :class="{ clickable: showDownload }"
       @click.prevent="onDownload"
     >
-      <template v-if="showDownload">📥</template>
+      <template v-if="showDownload"
+        ><img src="../../assets/download.svg"
+      /></template>
     </div>
   </header>
 </template>
@@ -28,6 +33,11 @@ export default defineComponent({
 
   props: {
     showBack: {
+      type: Boolean,
+      default: false,
+    },
+
+    showClose: {
       type: Boolean,
       default: false,
     },
@@ -47,7 +57,7 @@ export default defineComponent({
 
   methods: {
     onBack() {
-      if (this.showBack) {
+      if (this.showBack || this.showClose) {
         this.$emit("back");
       }
     },
