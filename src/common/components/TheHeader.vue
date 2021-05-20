@@ -1,26 +1,31 @@
 <template>
   <header>
-    <div
-      class="back-action"
-      title="Zurück"
-      :class="{ clickable: showBack || showClose }"
-      @click.prevent="onBack"
-    >
-      <template v-if="showBack"
-        ><img src="../../assets/arrow-left.svg"
-      /></template>
-      <template v-if="showClose"><img src="../../assets/x.svg" /></template>
-    </div>
-    <span>{{ text }}</span>
-    <div
-      class="download-action"
-      title="Analyse herunterladen"
-      :class="{ clickable: showDownload }"
-      @click.prevent="onDownload"
-    >
-      <template v-if="showDownload"
-        ><img src="../../assets/download.svg"
-      /></template>
+    <div class="content-wrapper">
+      <div
+        class="header-action header-action-left"
+        :title="leftActionTitle"
+        :class="{ clickable: showLeftAction }"
+        @click.prevent="onLeftAction"
+      >
+        <template v-if="showBack"
+          ><img src="../../assets/arrow-left.svg"
+        /></template>
+        <template v-if="showClose"><img src="../../assets/x.svg" /></template>
+      </div>
+      <span>{{ text }}</span>
+      <div
+        class="header-action header-action-right"
+        :title="rightActionTitle"
+        :class="{ clickable: showRightAction }"
+        @click.prevent="onRightAction"
+      >
+        <template v-if="showDelete"
+          ><img src="../../assets/trash-2.svg"
+        /></template>
+        <template v-if="showDownload"
+          ><img src="../../assets/download.svg"
+        /></template>
+      </div>
     </div>
   </header>
 </template>
@@ -42,6 +47,11 @@ export default defineComponent({
       default: false,
     },
 
+    showDelete: {
+      type: Boolean,
+      default: false,
+    },
+
     showDownload: {
       type: Boolean,
       default: false,
@@ -55,15 +65,45 @@ export default defineComponent({
 
   emits: ["back", "download"],
 
+  computed: {
+    leftActionTitle(): string {
+      if (this.showBack) {
+        return "Zurück";
+      } else if (this.showClose) {
+        return "Close";
+      } else {
+        return "";
+      }
+    },
+
+    rightActionTitle(): string {
+      if (this.showDelete) {
+        return "Löschen";
+      } else if (this.showDownload) {
+        return "Analyse herunterladen";
+      } else {
+        return "";
+      }
+    },
+
+    showLeftAction(): boolean {
+      return this.showBack || this.showClose;
+    },
+
+    showRightAction(): boolean {
+      return this.showDelete || this.showDownload;
+    },
+  },
+
   methods: {
-    onBack() {
-      if (this.showBack || this.showClose) {
+    onLeftAction() {
+      if (this.showLeftAction) {
         this.$emit("back");
       }
     },
 
-    onDownload() {
-      if (this.showDownload) {
+    onRightAction() {
+      if (this.showRightAction) {
         this.$emit("download");
       }
     },
@@ -76,13 +116,8 @@ header {
   background-color: white;
   box-shadow: 0 0 1rem 0 white;
   font-weight: var(--font-weight-bold);
-  height: 6.2rem;
-  padding: var(--padding-y) var(--padding-x);
+  height: 56px;
   z-index: var(--z-index-header);
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
 
   position: fixed;
   top: 0;
@@ -90,10 +125,29 @@ header {
   right: 0;
 }
 
-.back-action,
-.download-action {
-  display: inline-block;
-  width: var(--padding-x);
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  height: 100%;
+  margin: 0 auto;
+  max-width: var(--width-max);
+  padding: 0 var(--padding-x);
+}
+
+.header-action {
+  line-height: 1;
+  padding: 10px;
+}
+
+.header-action-left {
+  margin-left: -10px;
+}
+
+.header-action-right {
+  margin-right: -10px;
 }
 
 .clickable {

@@ -33,11 +33,7 @@ export default defineComponent({
 
   methods: {
     onBack(): void {
-      if (this.$route.name === "about") {
-        this.$router.push("/");
-      } else {
-        this.$router.push("/about");
-      }
+      this.$router.back();
     },
   },
 });

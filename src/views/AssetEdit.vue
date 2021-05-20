@@ -1,5 +1,11 @@
 <template>
-  <TheHeader text="Anlage bearbeiten" :showBack="true" @back="onBack" />
+  <TheHeader
+    text="Anlage bearbeiten"
+    :showBack="true"
+    :showDelete="true"
+    @back="onBack"
+    @download="onDelete"
+  />
   <main>
     <AssetForm
       :asset="getAsset()"
@@ -36,7 +42,7 @@ export default defineComponent({
   },
 
   methods: {
-    ...mapActions(["updateAsset"]),
+    ...mapActions(["deleteAsset", "updateAsset"]),
 
     getAsset(): FinancialProduct | undefined {
       const assetId = this.$route.params.assetId;
@@ -51,6 +57,11 @@ export default defineComponent({
 
     onBack(): void {
       this.leave();
+    },
+
+    onDelete(): void {
+      const assetId = this.$route.params.assetId;
+      this.deleteAsset(assetId).then(() => this.leave());
     },
 
     onSubmit(updatedAsset: FinancialProduct): void {

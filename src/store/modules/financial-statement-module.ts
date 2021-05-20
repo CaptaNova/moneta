@@ -17,6 +17,9 @@ const actions = {
   addAsset({ commit }: any, account: FinancialProduct): void {
     commit("ADD_ASSET", account);
   },
+  deleteAsset({ commit }: any, id: string): void {
+    commit("DELETE_ASSET", id);
+  },
   loadAccounts({ commit }: any, accounts: FinancialProduct[]): void {
     commit("SET_ASSETS", accounts);
   },
@@ -36,6 +39,12 @@ const actions = {
 const mutations = {
   ADD_ASSET: (state: IRootState, account: FinancialProduct): void => {
     state.accounts = [...state.accounts, account];
+    state.dirty = true;
+  },
+  DELETE_ASSET: (state: IRootState, id: string): void => {
+    state.accounts = state.accounts.filter(
+      (asset: FinancialProduct) => getAssetId(asset.identifier) !== id
+    );
     state.dirty = true;
   },
   RESET_DIRTY: (state: IRootState): void => {
