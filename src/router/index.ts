@@ -1,5 +1,3 @@
-import AboutHome from "@/components/about/AboutHome.vue";
-import AboutImprint from "@/components/about/AboutImprint.vue";
 import AssetCreate from "@/views/AssetCreate.vue";
 import AssetEdit from "@/views/AssetEdit.vue";
 import Error from "@/views/Error.vue";
@@ -37,8 +35,22 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
     children: [
-      { path: "", name: "about", component: AboutHome },
-      { path: "imprint", name: "imprint", component: AboutImprint },
+      {
+        path: "",
+        name: "about",
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ "@/components/about/AboutHome.vue"
+          ),
+      },
+      {
+        path: "imprint",
+        name: "imprint",
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ "@/components/about/AboutImprint.vue"
+          ),
+      },
     ],
   },
   {
