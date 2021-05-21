@@ -1,5 +1,5 @@
+import { AssetType } from "@/models";
 import { AssetClassDin77230 } from "./AssetClass";
-import { AssetType } from "./AssetType";
 import { FinancialProductConfiguration } from "./FinancialProductConfiguration";
 
 export const AssetTypeConfiguration: Record<

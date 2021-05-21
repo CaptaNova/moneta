@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import TheHeader from "@/common/components/TheHeader.vue";
+import TheHeader from "@/components/TheHeader.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({

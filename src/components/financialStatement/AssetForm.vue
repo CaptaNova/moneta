@@ -71,11 +71,10 @@
 </template>
 
 <script lang="ts">
-import { ListOption } from "@/common";
-import { AssetType, AssetTypeConfiguration, FinancialProduct } from "@/models";
-import { translateAssetType } from "@/utils";
+import { AssetType, FinancialProduct } from "@/models";
+import { AssetTypeConfiguration, ListOption } from "@/types";
+import { getAssetId, translateAssetType } from "@/utils";
 import { defineComponent, PropType } from "vue";
-import { getAssetId } from "../getAssetId";
 
 export default defineComponent({
   name: "AssetForm",

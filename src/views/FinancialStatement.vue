@@ -44,16 +44,12 @@
 </template>
 
 <script lang="ts">
-import ButtonFloating from "@/common/components/ButtonFloating.vue";
-import TheHeader from "@/common/components/TheHeader.vue";
-import {
-  AssetClassDin77230,
-  AssetType,
-  AssetTypeConfiguration,
-  FinancialProduct,
-} from "@/models";
-import AssetList from "@/modules/financialStatement/components/AssetList.vue";
-import AssetNoAssets from "@/modules/financialStatement/components/AssetNoAssets.vue";
+import ButtonFloating from "@/components/ButtonFloating.vue";
+import AssetList from "@/components/financialStatement/AssetList.vue";
+import AssetNoAssets from "@/components/financialStatement/AssetNoAssets.vue";
+import TheHeader from "@/components/TheHeader.vue";
+import { AssetType, FinancialProduct } from "@/models";
+import { AssetClassDin77230, AssetTypeConfiguration } from "@/types";
 import { createDownloadFile } from "@/utils";
 import { defineComponent } from "vue";
 import { mapActions, mapGetters } from "vuex";

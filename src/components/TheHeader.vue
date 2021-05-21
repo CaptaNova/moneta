@@ -8,9 +8,9 @@
         @click.prevent="onLeftAction"
       >
         <template v-if="showBack"
-          ><img src="../../assets/arrow-left.svg"
+          ><img src="../assets/arrow-left.svg"
         /></template>
-        <template v-if="showClose"><img src="../../assets/x.svg" /></template>
+        <template v-if="showClose"><img src="../assets/x.svg" /></template>
       </div>
       <span>{{ text }}</span>
       <div
@@ -20,10 +20,10 @@
         @click.prevent="onRightAction"
       >
         <template v-if="showDelete"
-          ><img src="../../assets/trash-2.svg"
+          ><img src="../assets/trash-2.svg"
         /></template>
         <template v-if="showDownload"
-          ><img src="../../assets/download.svg"
+          ><img src="../assets/download.svg"
         /></template>
       </div>
     </div>
@@ -116,7 +116,7 @@ header {
   background-color: white;
   box-shadow: 0 0 1rem 0 white;
   font-weight: var(--font-weight-bold);
-  height: 56px;
+  height: var(--header-height);
   z-index: var(--z-index-header);
 
   position: fixed;

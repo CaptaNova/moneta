@@ -17,10 +17,10 @@
 </template>
 
 <script lang="ts">
-import TheHeader from "@/common/components/TheHeader.vue";
+import AssetForm from "@/components/financialStatement/AssetForm.vue";
+import TheHeader from "@/components/TheHeader.vue";
 import { FinancialProduct } from "@/models";
-import { getAssetId } from "@/modules/financialStatement";
-import AssetForm from "@/modules/financialStatement/components/AssetForm.vue";
+import { getAssetId } from "@/utils";
 import { defineComponent } from "vue";
 import { mapActions } from "vuex";
 

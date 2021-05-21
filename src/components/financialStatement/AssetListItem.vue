@@ -12,9 +12,8 @@
 
 <script lang="ts">
 import { FinancialProduct } from "@/models";
-import { translateAssetType } from "@/utils";
+import { getAssetId, translateAssetType } from "@/utils";
 import { defineComponent, PropType } from "vue";
-import { getAssetId } from "../getAssetId";
 
 export default defineComponent({
   name: "AssetListItem",

@@ -1,5 +1,5 @@
-import AboutHome from "@/modules/about/components/AboutHome.vue";
-import AboutImprint from "@/modules/about/components/AboutImprint.vue";
+import AboutHome from "@/components/about/AboutHome.vue";
+import AboutImprint from "@/components/about/AboutImprint.vue";
 import AssetCreate from "@/views/AssetCreate.vue";
 import AssetEdit from "@/views/AssetEdit.vue";
 import Error from "@/views/Error.vue";

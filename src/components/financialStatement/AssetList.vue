@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import { FinancialProduct } from "@/models";
-import AssetListItem from "@/modules/financialStatement/components/AssetListItem.vue";
-import AssetListSummary from "@/modules/financialStatement/components/AssetListSummary.vue";
 import { defineComponent, PropType } from "vue";
+import AssetListItem from "./AssetListItem.vue";
+import AssetListSummary from "./AssetListSummary.vue";
 
 export default defineComponent({
   name: "AssetList",

@@ -1,5 +1,5 @@
-import { FinancialProduct } from "@/models/FinancialProduct";
-import { getAssetId } from "@/modules/financialStatement";
+import { FinancialProduct } from "@/models";
+import { getAssetId } from "@/utils";
 import { IRootState } from "../state";
 
 const state: IRootState = {
