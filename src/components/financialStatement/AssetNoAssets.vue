@@ -4,7 +4,7 @@
       <h1>Arm wie eine Kirchenmaus?</h1>
       <p>Das glaube ich Dir nicht! 😉</p>
       <p>
-        Füge Deine Anlagen hinzu. Ich empfehle Dir mir Deinem Girokonto
+        Füge Deine Anlagen hinzu. Ich empfehle Dir mit Deinem Girokonto
         anzufangen.
       </p>
       <div class="actions">
