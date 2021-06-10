@@ -26,6 +26,10 @@ export const AssetTypeConfiguration: Record<
     assetClass: { din77230: AssetClassDin77230.Cash },
     translation: { de: "Bausparvertrag" },
   },
+  Cryptocurrency: {
+    assetClass: { din77230: AssetClassDin77230.Other },
+    translation: { de: "Kryptowährung" },
+  },
   EndowmentPolicy: {
     assetClass: { din77230: AssetClassDin77230.Capital },
     translation: { de: "Kapitallebensversicherung" },
@@ -53,6 +57,14 @@ export const AssetTypeConfiguration: Record<
   OtherAssets: {
     assetClass: { din77230: AssetClassDin77230.Other },
     translation: { de: "Sonstige" },
+  },
+  PeerToPeerLending: {
+    assetClass: { din77230: AssetClassDin77230.Other },
+    translation: { de: "P2P-Kredit" },
+  },
+  PreciousMetal: {
+    assetClass: { din77230: AssetClassDin77230.Other },
+    translation: { de: "Edelmetall" },
   },
   RealEstateFund: {
     assetClass: { din77230: AssetClassDin77230.Capital },
