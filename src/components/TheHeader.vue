@@ -7,10 +7,8 @@
         :class="{ clickable: showLeftAction }"
         @click.prevent="onLeftAction"
       >
-        <template v-if="showBack"
-          ><img src="../assets/arrow-left.svg"
-        /></template>
-        <template v-if="showClose"><img src="../assets/x.svg" /></template>
+        <ArrowLeftIcon v-if="showBack" color="#9b4dca" />
+        <XIcon v-if="showClose" color="#9b4dca" />
       </div>
       <span>{{ text }}</span>
       <div
@@ -19,22 +17,31 @@
         :class="{ clickable: showRightAction }"
         @click.prevent="onRightAction"
       >
-        <template v-if="showDelete"
-          ><img src="../assets/trash-2.svg"
-        /></template>
-        <template v-if="showDownload"
-          ><img src="../assets/download.svg"
-        /></template>
+        <Trash2Icon v-if="showDelete" color="#9b4dca" />
+        <DownloadIcon v-if="showDownload" color="#9b4dca" />
       </div>
     </div>
   </header>
 </template>
 
 <script lang="ts">
+import {
+  ArrowLeft as ArrowLeftIcon,
+  Download as DownloadIcon,
+  Trash2 as Trash2Icon,
+  X as XIcon,
+} from "lucide-vue-next";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "TheHeader",
+
+  components: {
+    ArrowLeftIcon,
+    DownloadIcon,
+    Trash2Icon,
+    XIcon,
+  },
 
   props: {
     showBack: {
