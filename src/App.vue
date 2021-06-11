@@ -9,6 +9,7 @@ export default defineComponent({
   name: "App",
 
   created() {
+    // see https://stackoverflow.com/questions/7317273/warn-user-before-leaving-web-page-with-unsaved-changes
     window.addEventListener("beforeunload", (event) => {
       if (this.$store.state.FinancialStatementModule.dirty) {
         const confirmationMessage =
@@ -56,6 +57,7 @@ section {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  word-wrap: break-word;
 }
 
 .flex-center {

@@ -36,7 +36,8 @@ ul {
 }
 
 section {
-  height: 100vh;
+  min-height: 100vh;
+  padding: 10vh 0;
 }
 
 #function {

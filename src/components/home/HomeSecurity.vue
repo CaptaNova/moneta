@@ -39,7 +39,8 @@ p {
 section {
   background-color: var(--color-error);
   color: whitesmoke;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 10vh 0;
 }
 
 .content {
