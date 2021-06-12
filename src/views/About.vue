@@ -1,10 +1,5 @@
 <template>
-  <TheHeader
-    :text="headerText"
-    :showBack="isAboutHome"
-    :showClose="!isAboutHome"
-    @back="onBack"
-  />
+  <TheHeader :text="headerText" :showBack="true" @back="onBack" />
   <main>
     <router-view />
   </main>
@@ -24,10 +19,6 @@ export default defineComponent({
   computed: {
     headerText(): string {
       return this.$route.name === "imprint" ? "Impressum" : "App-Informationen";
-    },
-
-    isAboutHome(): boolean {
-      return this.$route.name === "about";
     },
   },
 

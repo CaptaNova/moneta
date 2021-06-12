@@ -8,7 +8,6 @@
         @click.prevent="onLeftAction"
       >
         <ArrowLeftIcon v-if="showBack" color="#9b4dca" />
-        <XIcon v-if="showClose" color="#9b4dca" />
       </div>
       <span>{{ text }}</span>
       <div
@@ -29,7 +28,6 @@ import {
   ArrowLeft as ArrowLeftIcon,
   Download as DownloadIcon,
   Trash2 as Trash2Icon,
-  X as XIcon,
 } from "lucide-vue-next";
 import { defineComponent } from "vue";
 
@@ -40,16 +38,10 @@ export default defineComponent({
     ArrowLeftIcon,
     DownloadIcon,
     Trash2Icon,
-    XIcon,
   },
 
   props: {
     showBack: {
-      type: Boolean,
-      default: false,
-    },
-
-    showClose: {
       type: Boolean,
       default: false,
     },
@@ -76,8 +68,6 @@ export default defineComponent({
     leftActionTitle(): string {
       if (this.showBack) {
         return "Zurück";
-      } else if (this.showClose) {
-        return "Close";
       } else {
         return "";
       }
@@ -94,7 +84,7 @@ export default defineComponent({
     },
 
     showLeftAction(): boolean {
-      return this.showBack || this.showClose;
+      return this.showBack;
     },
 
     showRightAction(): boolean {
