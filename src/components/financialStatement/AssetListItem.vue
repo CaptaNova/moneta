@@ -1,22 +1,32 @@
 <template>
-  <div class="asset" @click="editAsset">
+  <router-link class="list-item" :to="editPath">
+    <CircleBadge
+      ><AssetListItemIcon :assetType="asset.serviceType"
+    /></CircleBadge>
     <div class="info">
       <div class="name">{{ asset.name }}</div>
-      <div>{{ translateAssetType(asset.serviceType, "de") }}</div>
+      <div class="type">{{ translateAssetType(asset.serviceType, "de") }}</div>
     </div>
     <div class="amount">
       <span>{{ amountFormatted }} EUR</span>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script lang="ts">
+import CircleBadge from "@/components/common/CircleBadge.vue";
 import { FinancialProduct } from "@/models";
 import { getAssetId, translateAssetType } from "@/utils";
 import { defineComponent, PropType } from "vue";
+import AssetListItemIcon from "./AssetListItemIcon.vue";
 
 export default defineComponent({
   name: "AssetListItem",
+
+  components: {
+    CircleBadge,
+    AssetListItemIcon,
+  },
 
   props: {
     asset: {
@@ -32,29 +42,29 @@ export default defineComponent({
         maximumFractionDigits: 0,
       });
     },
+
+    editPath(): string {
+      const id = getAssetId(this.asset.identifier);
+      return `/financial-statement/asset/${id}`;
+    },
   },
 
   methods: {
-    editAsset() {
-      const id = getAssetId(this.asset.identifier);
-      this.$router.push(`/financial-statement/asset/${id}`);
-    },
-
     translateAssetType,
   },
 });
 </script>
 
 <style lang="scss" scoped>
-.asset {
+.list-item {
   border-top: 0.1rem solid #e1e1e1;
-  cursor: pointer;
-  padding: 1rem 0 1rem var(--padding-x);
+  color: inherit;
+  padding: 16px;
 
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   &:hover {
     background-color: rgba(96, 108, 118, 0.15);
@@ -62,14 +72,15 @@ export default defineComponent({
 }
 
 .amount {
+  margin-left: 16px;
   text-align: right;
   white-space: nowrap;
 }
 
 .info {
-  font-size: 1.2rem;
+  flex: 1;
+  margin-left: 16px;
   min-width: 0; /* https://css-tricks.com/flexbox-truncated-text/ */
-  padding-right: 1rem;
 
   .name {
     font-weight: var(--font-weight-bold);
@@ -77,15 +88,10 @@ export default defineComponent({
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-}
 
-@media (min-width: 40rem) {
-  .amount {
-    font-size: 1.8rem;
-  }
-
-  .info {
-    font-size: 1.6rem;
+  .type {
+    font-size: 1.4rem;
+    line-height: 1.4rem;
   }
 }
 </style>
