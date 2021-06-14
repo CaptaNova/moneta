@@ -1,95 +1,20 @@
 <template>
-  <!-- <Coins v-if="assetType === 'BankSavingsPlan'" :color="color" :size="size" /> -->
-  <!-- <Coins v-else-if="assetType === 'Bond'" :color="color" :size="size" /> -->
-  <PieChart v-if="assetType === 'BondFund'" :color="color" :size="size" />
-  <CreditCard
-    v-else-if="assetType === 'CheckingAccount'"
-    :color="color"
-    :size="size"
-  />
-  <Home
-    v-else-if="assetType === 'ConstructionLoan'"
-    :color="color"
-    :size="size"
-  />
-  <Bitcoin
-    v-else-if="assetType === 'Cryptocurrency'"
-    :color="color"
-    :size="size"
-  />
-  <Umbrella
-    v-else-if="assetType === 'EndowmentPolicy'"
-    :color="color"
-    :size="size"
-  />
-  <Award
-    v-else-if="assetType === 'IndexCertificate'"
-    :color="color"
-    :size="size"
-  />
-  <PieChart v-else-if="assetType === 'MixedFund'" :color="color" :size="size" />
-  <Coins
-    v-else-if="assetType === 'MoneyMarketAccount'"
-    :color="color"
-    :size="size"
-  />
-  <PieChart
-    v-else-if="assetType === 'MoneyMarketFund'"
-    :color="color"
-    :size="size"
-  />
-  <Coffee
-    v-else-if="assetType === 'OccupationalPensionScheme'"
-    :color="color"
-    :size="size"
-  />
-  <Percent
-    v-else-if="assetType === 'PeerToPeerLending'"
-    :color="color"
-    :size="size"
-  />
-  <Crown
-    v-else-if="assetType === 'PreciousMetal'"
-    :color="color"
-    :size="size"
-  />
-  <PieChart
-    v-else-if="assetType === 'RealEstateFund'"
-    :color="color"
-    :size="size"
-  />
-  <Coffee
-    v-else-if="assetType === 'RiesterPension'"
-    :color="color"
-    :size="size"
-  />
-  <Coffee
-    v-else-if="assetType === 'RuerupPension'"
-    :color="color"
-    :size="size"
-  />
-  <TrendingUp
-    v-else-if="assetType === 'SecuritiesAccount'"
-    :color="color"
-    :size="size"
-  />
-  <TrendingUp v-else-if="assetType === 'Share'" :color="color" :size="size" />
-  <PieChart v-else-if="assetType === 'StockFund'" :color="color" :size="size" />
-  <Percent
-    v-else-if="assetType === 'SubordinatedDebt'"
-    :color="color"
-    :size="size"
-  />
-  <Calendar
-    v-else-if="assetType === 'TimeDeposit'"
-    :color="color"
-    :size="size"
-  />
-  <Coffee
-    v-else-if="assetType === 'UnitLinkedPensionInsurance'"
-    :color="color"
-    :size="size"
-  />
+  <Award v-if="icon === 'Award'" :color="color" :size="size" />
+  <Bitcoin v-else-if="icon === 'Bitcoin'" :color="color" :size="size" />
+  <Calendar v-else-if="icon === 'Calendar'" :color="color" :size="size" />
+  <Coins v-else-if="icon === 'Coins'" :color="color" :size="size" />
+  <CreditCard v-else-if="icon === 'CreditCard'" :color="color" :size="size" />
+  <!-- Diamond instead of Crown -->
+  <Crown v-else-if="icon === 'Diamond'" :color="color" :size="size" />
+  <!-- Landmark -->
+  <Home v-else-if="icon === 'Home'" :color="color" :size="size" />
+  <TrendingUp v-else-if="icon === 'LineChartUp'" :color="color" :size="size" />
+  <Percent v-else-if="icon === 'Percent'" :color="color" :size="size" />
+  <PieChart v-else-if="icon === 'PieChart'" :color="color" :size="size" />
+  <!-- PiggiBank -->
+  <!-- RockingChair instead of Coffee -->
+  <Coffee v-else-if="icon === 'RockingChair'" :color="color" :size="size" />
+  <Umbrella v-else-if="icon === 'Umbrella'" :color="color" :size="size" />
   <Euro v-else :color="color" :size="size" />
 </template>
 
@@ -131,7 +56,7 @@ export default defineComponent({
   },
 
   props: {
-    assetType: {
+    icon: {
       type: String,
       required: true,
     },

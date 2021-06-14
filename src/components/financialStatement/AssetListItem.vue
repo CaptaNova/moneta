@@ -1,7 +1,7 @@
 <template>
   <router-link class="list-item" :to="editPath">
     <CircleBadge
-      ><AssetListItemIcon :assetType="asset.serviceType"
+      ><AssetListItemIcon :icon="getIconForAssetType(asset.serviceType)"
     /></CircleBadge>
     <div class="info">
       <div class="name">{{ asset.name }}</div>
@@ -16,7 +16,7 @@
 <script lang="ts">
 import CircleBadge from "@/components/common/CircleBadge.vue";
 import { FinancialProduct } from "@/models";
-import { getAssetId, translateAssetType } from "@/utils";
+import { getAssetId, getIconForAssetType, translateAssetType } from "@/utils";
 import { defineComponent, PropType } from "vue";
 import AssetListItemIcon from "./AssetListItemIcon.vue";
 
@@ -50,6 +50,7 @@ export default defineComponent({
   },
 
   methods: {
+    getIconForAssetType,
     translateAssetType,
   },
 });

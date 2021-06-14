@@ -1,0 +1,16 @@
+export type AssetTypeIcon =
+  | "Award"
+  | "Bitcoin"
+  | "Calendar"
+  | "Coins"
+  | "CreditCard"
+  | "Default"
+  | "Diamond"
+  | "Home"
+  | "Landmark"
+  | "LineChartUp"
+  | "Percent"
+  | "PieChart"
+  | "PiggiBank"
+  | "RockingChair"
+  | "Umbrella";
