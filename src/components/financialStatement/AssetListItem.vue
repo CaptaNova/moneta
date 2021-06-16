@@ -58,7 +58,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .list-item {
-  border-top: 0.1rem solid #e1e1e1;
   color: inherit;
   padding: 16px;
 

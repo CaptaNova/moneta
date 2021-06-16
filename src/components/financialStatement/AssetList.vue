@@ -1,11 +1,11 @@
 <template>
   <section>
     <AssetListSummary :assets="assets" :title="title" />
-    <AssetListItem
-      v-for="asset in assetsByName"
-      :key="asset.identifier"
-      :asset="asset"
-    />
+    <ul>
+      <li v-for="asset in assetsByName" :key="asset.identifier">
+        <AssetListItem :asset="asset" />
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -48,11 +48,21 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+li {
+  border-top: 0.1rem solid #e1e1e1;
+  margin: 0;
+}
+
 section {
   border-top: 0.1rem solid var(--color-primary);
   margin-top: var(--padding-y);
   padding: var(--padding-y) var(--padding-x);
   text-align: left;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
 }
 
 .summary {
