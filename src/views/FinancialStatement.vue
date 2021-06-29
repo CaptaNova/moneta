@@ -34,6 +34,11 @@
         />
         <ButtonFloating @click="onAddButtonClick" />
       </div>
+      <div class="content">
+        <router-link class="button" to="/financial-statement/asset-allocation"
+          >Vermögensstruktur</router-link
+        >
+      </div>
     </main>
   </template>
   <template v-else>
@@ -136,6 +141,10 @@ export default defineComponent({
   max-width: var(--width-max);
   padding-bottom: calc(1.5 * var(--padding-x));
   padding-top: calc(6rem + 1rem);
+}
+
+.content:last-child {
+  padding-top: 0;
 }
 
 .net-assets {

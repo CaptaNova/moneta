@@ -1,3 +1,4 @@
+import AssetAllocation from "@/views/AssetAllocation.vue";
 import AssetCreate from "@/views/AssetCreate.vue";
 import AssetEdit from "@/views/AssetEdit.vue";
 import Error from "@/views/Error.vue";
@@ -25,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/financial-statement/asset/:assetId",
     name: "asset-edit",
     component: AssetEdit,
+  },
+  {
+    path: "/financial-statement/asset-allocation",
+    name: "asset-create",
+    component: AssetAllocation,
   },
   {
     path: "/about",
@@ -63,6 +69,13 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 });
 
 export default router;
