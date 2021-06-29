@@ -6,15 +6,24 @@
         <h4>Vermögensstruktur</h4>
         <AssetAllocationList :assetAllocation="assetAllocation" />
       </section>
+      <section>
+        <h4>Vermögensstruktur</h4>
+        <ChartBarHorizontal
+          :values="assetAllocationValues"
+          :labels="assetAllocationLabels"
+        />
+      </section>
     </div>
   </main>
 </template>
 
 <script lang="ts">
+import ChartBarHorizontal from "@/components/common/ChartBarHorizontal.vue";
 import AssetAllocationList from "@/components/financialStatement/AssetAllocationList.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import { AssetType, FinancialProduct } from "@/models";
 import { AssetAllocation, AssetClass, AssetTypeConfiguration } from "@/types";
+import { translateAssetClass } from "@/utils";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 
@@ -23,6 +32,7 @@ export default defineComponent({
 
   components: {
     AssetAllocationList,
+    ChartBarHorizontal,
     TheHeader,
   },
 
@@ -54,9 +64,25 @@ export default defineComponent({
         percentage: (currentAllocation.amount / totalAmount) * 100,
       }));
     },
+
+    assetAllocationLabels(): string[] {
+      return [...this.assetAllocation]
+        .sort((a, b) => b.amount - a.amount)
+        .map((currentAllocation) =>
+          this.translateAssetClass(currentAllocation.assetClass)
+        );
+    },
+
+    assetAllocationValues(): number[] {
+      return [...this.assetAllocation]
+        .sort((a, b) => b.amount - a.amount)
+        .map((currentAllocation) => currentAllocation.percentage);
+    },
   },
 
   methods: {
+    translateAssetClass,
+
     onBack(): void {
       this.$router.back();
     },
