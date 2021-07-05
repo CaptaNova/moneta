@@ -14,11 +14,17 @@
             href="https://github.com/CaptaNova/moneta"
             class="external-link"
             target="_blank"
-            >Zum Programmcode</a
-          >
+            ><span>Zum Programmcode</span><ExternalLinkIcon
+          /></a>
         </li>
         <li>
-          <span class="no-link">Lizenz: {{ license }}</span>
+          <a
+            href="https://github.com/CaptaNova/moneta/blob/main/COPYING"
+            class="external-link"
+            target="_blank"
+            ><span>Lizenz: {{ license }}</span
+            ><ExternalLinkIcon
+          /></a>
         </li>
         <li>
           <span class="no-link">Version: {{ version }}</span>
@@ -29,10 +35,15 @@
 </template>
 
 <script lang="ts">
+import { ExternalLink as ExternalLinkIcon } from "lucide-vue-next";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "AboutHome",
+
+  components: {
+    ExternalLinkIcon,
+  },
 
   data() {
     return {
@@ -46,9 +57,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 li {
   border-bottom: 0.1rem solid #e1e1e1;
-  line-height: 1;
   margin: 0;
-  padding: 0.5rem 0;
+  padding: 0;
 
   &:last-of-type {
     border: none;
@@ -78,18 +88,13 @@ ul {
 }
 
 .external-link {
-  position: relative;
-  &::after {
-    content: "→";
-    position: absolute;
-    right: 0;
-  }
-}
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 
-@media (min-width: 40rem) {
-  p,
-  ul {
-    font-size: 2.2rem;
+  span {
+    flex: 1;
+    padding-right: var(--padding-x);
   }
 }
 </style>

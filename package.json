@@ -5,7 +5,7 @@
   "description": "A basic financial analysis for private households according to DIN 77230.",
   "homepage": "https://github.com/CaptaNova/moneta#readme",
   "bugs": "https://github.com/CaptaNova/moneta/issues",
-  "license": "MIT",
+  "license": "AGPL-3.0-or-later",
   "author": "CaptaNova <hallo@captanova.de> (https://captanova.de)",
   "repository": "github:CaptaNova/moneta",
   "scripts": {

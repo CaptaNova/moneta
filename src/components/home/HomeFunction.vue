@@ -45,8 +45,8 @@ section {
 }
 
 .content {
+  height: 100%;
   margin: 0 auto;
-  margin-top: var(--padding-x);
   max-width: var(--width-max);
   padding: var(--padding-y) var(--padding-x);
 }
