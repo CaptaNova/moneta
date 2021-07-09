@@ -32,7 +32,7 @@
           :assets="getAssetsForAssetClass(AssetClassDin77230.NonBalanceable)"
           title="Nicht bilanzierbare Positionen"
         />
-        <ButtonFloating @click="onAddButtonClick" />
+        <ButtonFloating @click="addNewAsset" />
       </div>
       <div class="content">
         <router-link class="button" to="/financial-statement/asset-allocation"
@@ -42,16 +42,21 @@
     </main>
   </template>
   <template v-else>
-    <main class="no-assets">
-      <AssetNoAssets />
+    <main class="no-assets flex-column flex-center">
+      <BlankSlate
+        :title="'Arm wie eine Kirchenmaus?'"
+        :description="noAssetDescription"
+        :buttonText="'Neue Anlage hinzufügen'"
+        @button-clicked="addNewAsset"
+      />
     </main>
   </template>
 </template>
 
 <script lang="ts">
 import ButtonFloating from "@/components/ButtonFloating.vue";
+import BlankSlate from "@/components/common/BlankSlate.vue";
 import AssetList from "@/components/financialStatement/AssetList.vue";
-import AssetNoAssets from "@/components/financialStatement/AssetNoAssets.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import { AssetType, FinancialProduct } from "@/models";
 import { AssetClassDin77230, AssetTypeConfiguration } from "@/types";
@@ -64,7 +69,7 @@ export default defineComponent({
 
   components: {
     AssetList,
-    AssetNoAssets,
+    BlankSlate,
     ButtonFloating,
     TheHeader,
   },
@@ -72,6 +77,9 @@ export default defineComponent({
   data() {
     return {
       AssetClassDin77230: AssetClassDin77230,
+      noAssetDescription: `Das glaube ich Dir nicht! 😉
+
+Füge Deine Anlagen hinzu. Ich empfehle Dir mit Deinem Girokonto anzufangen.`,
     };
   },
 
@@ -99,6 +107,10 @@ export default defineComponent({
   methods: {
     ...mapActions(["resetDirty"]),
 
+    addNewAsset(): void {
+      this.$router.push("/financial-statement/asset/add");
+    },
+
     getAssetsForAssetClass(assetClass: AssetClassDin77230): FinancialProduct[] {
       return this.accountList.filter(
         (asset: FinancialProduct) =>
@@ -108,10 +120,6 @@ export default defineComponent({
 
     getAssetClassDin77230(assetType: AssetType): AssetClassDin77230 {
       return AssetTypeConfiguration[assetType].assetClass.din77230;
-    },
-
-    onAddButtonClick() {
-      this.$router.push("/financial-statement/asset/add");
     },
 
     onDownload(): void {
@@ -150,5 +158,9 @@ export default defineComponent({
 .net-assets {
   color: var(--color-primary);
   font-size: 2rem;
+}
+
+.no-assets {
+  height: 100vh;
 }
 </style>

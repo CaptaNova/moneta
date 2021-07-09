@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/financial-statement/asset-allocation",
-    name: "asset-create",
+    name: "asset-allocation",
     component: AssetAllocation,
   },
   {
