@@ -1,4 +1,5 @@
 export * from "./createDownloadFile";
+export * from "./createDownloadFileName";
 export * from "./createEmptyAsset";
 export * from "./getAssetId";
 export * from "./getIconForAssetClass";

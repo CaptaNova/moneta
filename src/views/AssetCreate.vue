@@ -1,5 +1,4 @@
 <template>
-  <TheHeader text="Neue Anlage" :showBack="true" @back="onBack" />
   <main>
     <AssetForm
       :asset="createEmptyAsset()"
@@ -12,7 +11,6 @@
 
 <script lang="ts">
 import AssetForm from "@/components/financialStatement/AssetForm.vue";
-import TheHeader from "@/components/TheHeader.vue";
 import { FinancialProduct } from "@/models";
 import { createEmptyAsset, getAssetId } from "@/utils";
 import { defineComponent } from "vue";
@@ -23,7 +21,6 @@ export default defineComponent({
 
   components: {
     AssetForm,
-    TheHeader,
   },
 
   computed: {
@@ -39,16 +36,10 @@ export default defineComponent({
 
     createEmptyAsset,
 
-    leave(): void {
-      this.$router.push("/financial-statement");
-    },
-
-    onBack(): void {
-      this.leave();
-    },
-
     onSubmit(newAsset: FinancialProduct): void {
-      this.addAsset(newAsset).then(() => this.leave());
+      this.addAsset(newAsset).then(() =>
+        this.$router.push("/financial-statement")
+      );
     },
   },
 });

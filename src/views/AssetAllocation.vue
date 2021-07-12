@@ -1,5 +1,4 @@
 <template>
-  <TheHeader text="Vermögensstruktur" :showBack="true" @back="onBack" />
   <main>
     <div class="content">
       <section>
@@ -20,7 +19,6 @@
 <script lang="ts">
 import ChartBarHorizontal from "@/components/common/ChartBarHorizontal.vue";
 import AssetAllocationList from "@/components/financialStatement/AssetAllocationList.vue";
-import TheHeader from "@/components/TheHeader.vue";
 import { AssetType, FinancialProduct } from "@/models";
 import { AssetAllocation, AssetClass, AssetTypeConfiguration } from "@/types";
 import { translateAssetClass } from "@/utils";
@@ -33,7 +31,6 @@ export default defineComponent({
   components: {
     AssetAllocationList,
     ChartBarHorizontal,
-    TheHeader,
   },
 
   computed: {
@@ -82,10 +79,6 @@ export default defineComponent({
 
   methods: {
     translateAssetClass,
-
-    onBack(): void {
-      this.$router.back();
-    },
 
     getAssetClass(assetType: AssetType): AssetClass {
       return AssetTypeConfiguration[assetType].assetClass.default;

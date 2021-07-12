@@ -1,12 +1,76 @@
 <template>
+  <TheHeader
+    v-if="headerTitle"
+    :navigation="headerNavigation"
+    :title="headerTitle"
+    :action="headerAction"
+    @back="navigateBack"
+    @action="performAction"
+  />
   <router-view />
 </template>
 
 <script lang="ts">
+import TheHeader from "@/components/TheHeader.vue";
+import { createDownloadFile, createDownloadFileName } from "@/utils";
 import { defineComponent } from "vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default defineComponent({
   name: "App",
+
+  components: {
+    TheHeader,
+  },
+
+  computed: {
+    ...mapGetters(["accountList"]),
+
+    headerAction(): string | undefined {
+      return this.$route.meta.headerAction as string | undefined;
+    },
+
+    headerNavigation(): string | undefined {
+      return this.$route.meta.headerNavigation as string | undefined;
+    },
+
+    headerTitle(): string | undefined {
+      return this.$route.meta.headerTitle as string | undefined;
+    },
+  },
+
+  methods: {
+    ...mapActions(["deleteAsset", "resetDirty"]),
+
+    navigateBack(): void {
+      this.$router.back();
+    },
+
+    performAction(): void {
+      if (this.headerAction === "download") {
+        this.export();
+        return;
+      }
+
+      if (this.headerAction === "delete") {
+        const assetId = this.$route.params.assetId;
+        this.deleteAsset(assetId).then(() => this.$router.back());
+      }
+    },
+
+    export(): void {
+      // see https://medium.com/js-dojo/force-file-download-in-vuejs-using-axios-a7fe1b5dfe7b
+      const data = createDownloadFile(this.accountList);
+
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(new Blob([data]));
+      link.download = createDownloadFileName();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      this.resetDirty();
+    },
+  },
 
   created() {
     // see https://stackoverflow.com/questions/7317273/warn-user-before-leaving-web-page-with-unsaved-changes
@@ -14,7 +78,7 @@ export default defineComponent({
       if (this.$store.state.FinancialStatementModule.dirty) {
         const confirmationMessage =
           "Du hast etwas geändert und die Daten noch nicht heruntergeladen. " +
-          "Wenn du die Seite verlääst, werden deine Änderungen verloren gehen.";
+          "Wenn du die Seite verlässt, werden deine Änderungen verloren gehen.";
         event.preventDefault();
         event.returnValue = confirmationMessage;
         return confirmationMessage;

@@ -1,11 +1,4 @@
 <template>
-  <TheHeader
-    text="Anlage bearbeiten"
-    :showBack="true"
-    :showDelete="true"
-    @back="onBack"
-    @download="onDelete"
-  />
   <main>
     <AssetForm
       :asset="getAsset()"
@@ -18,7 +11,6 @@
 
 <script lang="ts">
 import AssetForm from "@/components/financialStatement/AssetForm.vue";
-import TheHeader from "@/components/TheHeader.vue";
 import { FinancialProduct } from "@/models";
 import { getAssetId } from "@/utils";
 import { defineComponent } from "vue";
@@ -29,7 +21,6 @@ export default defineComponent({
 
   components: {
     AssetForm,
-    TheHeader,
   },
 
   computed: {
@@ -42,7 +33,7 @@ export default defineComponent({
   },
 
   methods: {
-    ...mapActions(["deleteAsset", "updateAsset"]),
+    ...mapActions(["updateAsset"]),
 
     getAsset(): FinancialProduct | undefined {
       const assetId = this.$route.params.assetId;
@@ -51,23 +42,10 @@ export default defineComponent({
       );
     },
 
-    leave(): void {
-      this.$router.push("/financial-statement");
-    },
-
-    onBack(): void {
-      this.leave();
-    },
-
-    onDelete(): void {
-      const assetId = this.$route.params.assetId;
-      this.deleteAsset(assetId).then(() => this.leave());
-    },
-
     onSubmit(updatedAsset: FinancialProduct): void {
       const assetId = this.$route.params.assetId;
       this.updateAsset({ id: assetId, asset: updatedAsset }).then(() =>
-        this.leave()
+        this.$router.push("/financial-statement")
       );
     },
   },

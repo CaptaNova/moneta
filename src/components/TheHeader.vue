@@ -1,24 +1,24 @@
 <template>
   <header>
     <div class="content-wrapper">
-      <div
-        class="header-action header-action-left"
-        :title="leftActionTitle"
-        :class="{ clickable: showLeftAction }"
-        @click.prevent="onLeftAction"
+      <button
+        class="icon nav-icon"
+        :title="navigationTitle"
+        :class="{ invisible: !navigation }"
+        @click.prevent="onNavigate"
       >
-        <ArrowLeftIcon v-if="showBack" color="#9b4dca" />
-      </div>
-      <span>{{ text }}</span>
-      <div
-        class="header-action header-action-right"
-        :title="rightActionTitle"
-        :class="{ clickable: showRightAction }"
-        @click.prevent="onRightAction"
+        <ArrowLeftIcon color="#9b4dca" />
+      </button>
+      <div class="header-title">{{ title }}</div>
+      <button
+        class="icon action-icon"
+        :title="actionTitle"
+        :class="{ invisible: !action }"
+        @click.prevent="onAction"
       >
-        <Trash2Icon v-if="showDelete" color="#9b4dca" />
-        <DownloadIcon v-if="showDownload" color="#9b4dca" />
-      </div>
+        <Trash2Icon v-if="action === 'delete'" color="#9b4dca" />
+        <DownloadIcon v-else color="#9b4dca" />
+      </button>
     </div>
   </header>
 </template>
@@ -41,68 +41,49 @@ export default defineComponent({
   },
 
   props: {
-    showBack: {
-      type: Boolean,
-      default: false,
-    },
-
-    showDelete: {
-      type: Boolean,
-      default: false,
-    },
-
-    showDownload: {
-      type: Boolean,
-      default: false,
-    },
-
-    text: {
+    navigation: {
       type: String,
-      required: true,
+      required: false,
+    },
+
+    title: {
+      type: String,
+      required: false,
+      default: () => "",
+    },
+
+    action: {
+      type: String,
+      required: false,
     },
   },
 
-  emits: ["back", "download"],
+  emits: ["back", "action"],
 
   computed: {
-    leftActionTitle(): string {
-      if (this.showBack) {
-        return "Zurück";
-      } else {
-        return "";
+    navigationTitle(): string {
+      return this.navigation ? "Zurück" : "";
+    },
+
+    actionTitle(): string {
+      switch (this.action) {
+        case "delete":
+          return "Löschen";
+        case "download":
+          return "Analyse herunterladen";
+        default:
+          return "";
       }
-    },
-
-    rightActionTitle(): string {
-      if (this.showDelete) {
-        return "Löschen";
-      } else if (this.showDownload) {
-        return "Analyse herunterladen";
-      } else {
-        return "";
-      }
-    },
-
-    showLeftAction(): boolean {
-      return this.showBack;
-    },
-
-    showRightAction(): boolean {
-      return this.showDelete || this.showDownload;
     },
   },
 
   methods: {
-    onLeftAction() {
-      if (this.showLeftAction) {
-        this.$emit("back");
-      }
+    onNavigate() {
+      this.$emit("back");
     },
 
-    onRightAction() {
-      if (this.showRightAction) {
-        this.$emit("download");
-      }
+    onAction() {
+      this.$emit("action");
     },
   },
 });
@@ -112,8 +93,7 @@ export default defineComponent({
 header {
   background-color: white;
   box-shadow: 0 0 1rem 0 white;
-  font-weight: var(--font-weight-bold);
-  height: var(--header-height);
+  height: calc(16px + 16px + 24px); // TODO: extract to variable
   z-index: var(--z-index-header);
 
   position: fixed;
@@ -123,31 +103,88 @@ header {
 }
 
 .content-wrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
-
   height: 100%;
-  margin: 0 auto;
-  max-width: var(--width-max);
-  padding: 0 var(--padding-x);
-}
-
-.header-action {
+  justify-content: flex-start;
   line-height: 1;
-  padding: 10px;
+  margin: 0 16px;
 }
 
-.header-action-left {
-  margin-left: -10px;
+.header-title {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  flex: 1;
 }
 
-.header-action-right {
-  margin-right: -10px;
+.icon {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  height: calc(24px + 12px + 12px);
+  justify-content: center;
+  padding: 0;
+  width: calc(24px + 12px + 12px);
+
+  &:focus,
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 
-.clickable {
-  cursor: pointer;
+.invisible {
+  visibility: hidden;
 }
+
+.action-icon {
+  margin: 0 -12px 0 calc(32px - 12px);
+}
+
+.nav-icon {
+  margin: 0 calc(32px - 12px) 0 -12px;
+}
+
+@media only screen and (min-width: 576px) {
+  .content-wrapper {
+    margin: 0 32px;
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 905px) {
+  .content-wrapper {
+    margin: 0 auto;
+    width: 840px;
+  }
+}
+
+@media only screen and (min-width: 1240px) {
+  .content-wrapper {
+    margin: 0 200px;
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .content-wrapper {
+    margin: 0 auto;
+    width: 1040px;
+  }
+}
+
+@media print {
+  .icon {
+    display: none;
+  }
+}
+
+/*
+sm: 576px
+md: 768px
+lg: 1012px
+xl: 1280px
+*/
 </style>

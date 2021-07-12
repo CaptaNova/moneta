@@ -11,26 +11,51 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "home",
     component: Home,
+    meta: {
+      headerNavigation: undefined,
+      headerTitle: undefined,
+      headerAction: undefined,
+    },
   },
   {
     path: "/financial-statement",
     name: "financial-statement",
     component: FinancialStatement,
+    meta: {
+      headerNavigation: "",
+      headerTitle: "Vermögensbilanz",
+      headerAction: "download",
+    },
   },
   {
     path: "/financial-statement/asset/add",
     name: "asset-create",
     component: AssetCreate,
+    meta: {
+      headerNavigation: "back",
+      headerTitle: "Neue Anlage",
+      headerAction: undefined,
+    },
   },
   {
     path: "/financial-statement/asset/:assetId",
     name: "asset-edit",
     component: AssetEdit,
+    meta: {
+      headerNavigation: "back",
+      headerTitle: "Anlage bearbeiten",
+      headerAction: "delete",
+    },
   },
   {
     path: "/financial-statement/asset-allocation",
     name: "asset-allocation",
     component: AssetAllocation,
+    meta: {
+      headerNavigation: "back",
+      headerTitle: "Vermögensstruktur",
+      headerAction: undefined,
+    },
   },
   {
     path: "/about",
@@ -40,6 +65,11 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    meta: {
+      headerNavigation: "back",
+      headerTitle: "App-Informationen",
+      headerAction: undefined,
+    },
     children: [
       {
         path: "",
@@ -48,6 +78,11 @@ const routes: Array<RouteRecordRaw> = [
           import(
             /* webpackChunkName: "about" */ "@/components/about/AboutHome.vue"
           ),
+        meta: {
+          headerNavigation: "back",
+          headerTitle: "App-Informationen",
+          headerAction: undefined,
+        },
       },
       {
         path: "imprint",
@@ -56,6 +91,11 @@ const routes: Array<RouteRecordRaw> = [
           import(
             /* webpackChunkName: "about" */ "@/components/about/AboutImprint.vue"
           ),
+        meta: {
+          headerNavigation: "back",
+          headerTitle: "Impressum",
+          headerAction: undefined,
+        },
       },
     ],
   },
@@ -63,6 +103,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/:pathMatch(.*)*",
     name: "not-found",
     component: Error,
+    meta: {
+      headerNavigation: undefined,
+      headerTitle: undefined,
+      headerAction: undefined,
+    },
   },
 ];
 

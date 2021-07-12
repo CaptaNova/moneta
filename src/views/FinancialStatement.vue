@@ -1,9 +1,4 @@
 <template>
-  <TheHeader
-    text="Vermögensbilanz"
-    :showDownload="true"
-    @download="onDownload"
-  />
   <template v-if="hasAssets">
     <main>
       <div class="content flex-column">
@@ -57,12 +52,10 @@
 import ButtonFloating from "@/components/ButtonFloating.vue";
 import BlankSlate from "@/components/common/BlankSlate.vue";
 import AssetList from "@/components/financialStatement/AssetList.vue";
-import TheHeader from "@/components/TheHeader.vue";
 import { AssetType, FinancialProduct } from "@/models";
 import { AssetClassDin77230, AssetTypeConfiguration } from "@/types";
-import { createDownloadFile } from "@/utils";
 import { defineComponent } from "vue";
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "FinancialStatement",
@@ -71,7 +64,6 @@ export default defineComponent({
     AssetList,
     BlankSlate,
     ButtonFloating,
-    TheHeader,
   },
 
   data() {
@@ -105,8 +97,6 @@ Füge Deine Anlagen hinzu. Ich empfehle Dir mit Deinem Girokonto anzufangen.`,
   },
 
   methods: {
-    ...mapActions(["resetDirty"]),
-
     addNewAsset(): void {
       this.$router.push("/financial-statement/asset/add");
     },
@@ -120,24 +110,6 @@ Füge Deine Anlagen hinzu. Ich empfehle Dir mit Deinem Girokonto anzufangen.`,
 
     getAssetClassDin77230(assetType: AssetType): AssetClassDin77230 {
       return AssetTypeConfiguration[assetType].assetClass.din77230;
-    },
-
-    onDownload(): void {
-      // see https://medium.com/js-dojo/force-file-download-in-vuejs-using-axios-a7fe1b5dfe7b
-      const data = createDownloadFile(this.accountList);
-
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(new Blob([data]));
-      link.download = this.createDownloadFileName();
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      this.resetDirty();
-    },
-
-    createDownloadFileName(): string {
-      const date = new Date().toISOString().substring(0, 10).replace(/-/g, "");
-      return `Moneta-Vermögensbilanz-${date}.json`;
     },
   },
 });
