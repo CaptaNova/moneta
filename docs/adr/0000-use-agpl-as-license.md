@@ -54,8 +54,10 @@ Chosen option: "AGPL-3.0", because it is an OSI-approved license, which meets al
 
 - [Which License Should I Use?](https://exygy.com/blog/which-license-should-i-use-mit-vs-apache-vs-gpl/)
 - [What is the AGPL license](https://snyk.io/learn/agpl-license/)
+- [Understanding the AGPL: The Most Misunderstood License](https://medium.com/swlh/understanding-the-agpl-the-most-misunderstood-license-86fd1fe91275)
 - [I enforced the AGPL on my code, …](https://raymii.org/s/blog/I_enforced_the_AGPL_on_my_code_heres_how_it_went.html)
 - [Open source licensing and why we're changing Plausible to the AGPL license](http://web.archive.org/web/20201015140440/https://plausible.io/blog/open-source-licenses)
 - [Grafana, Loki, and Tempo will be relicensed to AGPLv3](https://grafana.com/blog/2021/04/20/grafana-loki-tempo-relicensing-to-agplv3/)
+- [How do I make sure my software complies with AGPL](https://itextpdf.com/en/blog/technical-notes/how-do-i-make-sure-my-software-complies-agpl-how-can-i-use-itext-free)
 
 <!-- markdownlint-disable-file MD013 -->
