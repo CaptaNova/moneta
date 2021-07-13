@@ -20,11 +20,11 @@
 </template>
 
 <script lang="ts">
-import BaseCircleBadge from "@/components/BaseCircleBadge.vue";
-import BaseMeterHorizontal from "@/components/BaseMeterHorizontal.vue";
 import { getIconForAssetClass, translateAssetClass } from "@/utils";
 import { defineComponent } from "vue";
 import AssetListItemIcon from "./AssetListItemIcon.vue";
+import BaseCircleBadge from "./BaseCircleBadge.vue";
+import BaseMeterHorizontal from "./BaseMeterHorizontal.vue";
 
 export default defineComponent({
   name: "AssetAllocationListItem",

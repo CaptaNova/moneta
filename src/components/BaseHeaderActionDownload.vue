@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts">
-import BaseHeaderAction from "@/components/BaseHeaderAction.vue";
 import { createDownloadFile, createDownloadFileName } from "@/utils";
 import { Download as DownloadIcon } from "lucide-vue-next";
 import { defineComponent } from "vue";
 import { mapActions, mapGetters } from "vuex";
+import BaseHeaderAction from "./BaseHeaderAction.vue";
 
 export default defineComponent({
   name: "BaseHeaderActionDownload",

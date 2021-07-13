@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts">
-import BaseCircleBadge from "@/components/BaseCircleBadge.vue";
 import { FinancialProduct } from "@/models";
 import { getAssetId, getIconForAssetType, translateAssetType } from "@/utils";
 import { defineComponent, PropType } from "vue";
 import AssetListItemIcon from "./AssetListItemIcon.vue";
+import BaseCircleBadge from "./BaseCircleBadge.vue";
 
 export default defineComponent({
   name: "AssetListItem",

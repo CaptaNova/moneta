@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import UploadButton from "@/components/UploadButton.vue";
+import UploadButton from "./UploadButton.vue";
 
 export default defineComponent({
   name: "HomeHero",

@@ -52,10 +52,10 @@
 </template>
 
 <script lang="ts">
+import AssetList from "@/components/AssetList.vue";
 import BaseBlankSlate from "@/components/BaseBlankSlate.vue";
 import BaseButtonFloating from "@/components/BaseButtonFloating.vue";
 import BaseHeaderActionDownload from "@/components/BaseHeaderActionDownload.vue";
-import AssetList from "@/components/financialStatement/AssetList.vue";
 import { AssetType, FinancialProduct } from "@/models";
 import { AssetClassDin77230, AssetTypeConfiguration } from "@/types";
 import { defineComponent } from "vue";

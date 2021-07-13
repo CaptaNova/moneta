@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import AssetForm from "@/components/financialStatement/AssetForm.vue";
+import AssetForm from "@/components/AssetForm.vue";
 import { FinancialProduct } from "@/models";
 import { createEmptyAsset, getAssetId } from "@/utils";
 import { defineComponent } from "vue";

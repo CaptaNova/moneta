@@ -15,13 +15,13 @@
 </template>
 
 <script lang="ts">
+import AssetForm from "@/components/AssetForm.vue";
 import BaseHeaderAction from "@/components/BaseHeaderAction.vue";
-import AssetForm from "@/components/financialStatement/AssetForm.vue";
 import { FinancialProduct } from "@/models";
 import { getAssetId } from "@/utils";
+import { Trash2 as Trash2Icon } from "lucide-vue-next";
 import { defineComponent } from "vue";
 import { mapActions } from "vuex";
-import { Trash2 as Trash2Icon } from "lucide-vue-next";
 
 export default defineComponent({
   name: "AssetEdit",
