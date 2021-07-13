@@ -3,7 +3,7 @@
     <div v-for="(value, index) in values" :key="index" class="bar-chart-item">
       <div class="label">{{ getLabel(index) }}</div>
       <div class="meter">
-        <MeterHorizontal
+        <BaseMeterHorizontal
           :min="0"
           :max="100"
           :decimalPlaces="2"
@@ -17,13 +17,13 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import MeterHorizontal from "./MeterHorizontal.vue";
+import BaseMeterHorizontal from "./BaseMeterHorizontal.vue";
 
 export default defineComponent({
   name: "ChartBarHorizontal",
 
   components: {
-    MeterHorizontal,
+    BaseMeterHorizontal,
   },
 
   props: {

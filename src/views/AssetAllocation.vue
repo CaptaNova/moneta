@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import ChartBarHorizontal from "@/components/common/ChartBarHorizontal.vue";
+import ChartBarHorizontal from "@/components/ChartBarHorizontal.vue";
 import AssetAllocationList from "@/components/financialStatement/AssetAllocationList.vue";
 import { AssetType, FinancialProduct } from "@/models";
 import { AssetAllocation, AssetClass, AssetTypeConfiguration } from "@/types";

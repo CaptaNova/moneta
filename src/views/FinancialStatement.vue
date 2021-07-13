@@ -27,7 +27,7 @@
           :assets="getAssetsForAssetClass(AssetClassDin77230.NonBalanceable)"
           title="Nicht bilanzierbare Positionen"
         />
-        <ButtonFloating @click="addNewAsset" />
+        <BaseButtonFloating @click="addNewAsset" />
       </div>
       <div class="content">
         <router-link class="button" to="/financial-statement/asset-allocation"
@@ -38,7 +38,7 @@
   </template>
   <template v-else>
     <main class="no-assets flex-column flex-center">
-      <BlankSlate
+      <BaseBlankSlate
         :title="'Arm wie eine Kirchenmaus?'"
         :description="noAssetDescription"
         :buttonText="'Neue Anlage hinzufügen'"
@@ -52,9 +52,9 @@
 </template>
 
 <script lang="ts">
+import BaseBlankSlate from "@/components/BaseBlankSlate.vue";
+import BaseButtonFloating from "@/components/BaseButtonFloating.vue";
 import BaseHeaderActionDownload from "@/components/BaseHeaderActionDownload.vue";
-import ButtonFloating from "@/components/ButtonFloating.vue";
-import BlankSlate from "@/components/common/BlankSlate.vue";
 import AssetList from "@/components/financialStatement/AssetList.vue";
 import { AssetType, FinancialProduct } from "@/models";
 import { AssetClassDin77230, AssetTypeConfiguration } from "@/types";
@@ -66,8 +66,8 @@ export default defineComponent({
 
   components: {
     AssetList,
-    BlankSlate,
-    ButtonFloating,
+    BaseBlankSlate,
+    BaseButtonFloating,
     BaseHeaderActionDownload,
   },
 

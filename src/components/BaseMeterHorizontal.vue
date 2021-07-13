@@ -5,8 +5,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
+// see
+// https://css-tricks.com/password-strength-meter/
+// https://css-tricks.com/html5-meter-element/
+
 export default defineComponent({
-  name: "MeterHorizontal",
+  name: "BaseMeterHorizontal",
 
   props: {
     decimalPlaces: {

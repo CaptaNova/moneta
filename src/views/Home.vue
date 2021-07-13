@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts">
-import HomeAbout from "@/components/home/HomeAbout.vue";
-import HomeFunction from "@/components/home/HomeFunction.vue";
-import HomeHero from "@/components/home/HomeHero.vue";
-import HomeSecurity from "@/components/home/HomeSecurity.vue";
+import HomeAbout from "@/components/HomeAbout.vue";
+import HomeFunction from "@/components/HomeFunction.vue";
+import HomeHero from "@/components/HomeHero.vue";
+import HomeSecurity from "@/components/HomeSecurity.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({

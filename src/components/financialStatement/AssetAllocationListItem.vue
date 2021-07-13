@@ -1,15 +1,15 @@
 <template>
   <div class="list-item">
-    <CircleBadge
+    <BaseCircleBadge
       ><AssetListItemIcon :icon="getIconForAssetClass(assetClass)"
-    /></CircleBadge>
+    /></BaseCircleBadge>
     <div class="info">
       <label>
         <div class="name">{{ translateAssetClass(assetClass) }}</div>
         <div class="amount">{{ amountFormatted }} EUR</div>
         <div class="percentage">{{ percentage.toFixed(2) }} %</div>
       </label>
-      <MeterHorizontal
+      <BaseMeterHorizontal
         :min="0"
         :max="100"
         :value="percentage"
@@ -20,8 +20,8 @@
 </template>
 
 <script lang="ts">
-import CircleBadge from "@/components/common/CircleBadge.vue";
-import MeterHorizontal from "@/components/common/MeterHorizontal.vue";
+import BaseCircleBadge from "@/components/BaseCircleBadge.vue";
+import BaseMeterHorizontal from "@/components/BaseMeterHorizontal.vue";
 import { getIconForAssetClass, translateAssetClass } from "@/utils";
 import { defineComponent } from "vue";
 import AssetListItemIcon from "./AssetListItemIcon.vue";
@@ -31,8 +31,8 @@ export default defineComponent({
 
   components: {
     AssetListItemIcon,
-    CircleBadge,
-    MeterHorizontal,
+    BaseCircleBadge,
+    BaseMeterHorizontal,
   },
 
   props: {

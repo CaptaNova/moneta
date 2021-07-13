@@ -69,9 +69,7 @@ const routes: Array<RouteRecordRaw> = [
         path: "",
         name: "about",
         component: () =>
-          import(
-            /* webpackChunkName: "about" */ "@/components/about/AboutHome.vue"
-          ),
+          import(/* webpackChunkName: "about" */ "@/components/AboutHome.vue"),
         meta: {
           headerNavigation: "back",
           headerTitle: "App-Informationen",
@@ -82,7 +80,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "imprint",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/components/about/AboutImprint.vue"
+            /* webpackChunkName: "about" */ "@/components/AboutImprint.vue"
           ),
         meta: {
           headerNavigation: "back",

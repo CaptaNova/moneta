@@ -1,8 +1,8 @@
 <template>
   <router-link class="list-item" :to="editPath">
-    <CircleBadge
+    <BaseCircleBadge
       ><AssetListItemIcon :icon="getIconForAssetType(asset.serviceType)"
-    /></CircleBadge>
+    /></BaseCircleBadge>
     <div class="info">
       <div class="name">{{ asset.name }}</div>
       <div class="type">{{ translateAssetType(asset.serviceType, "de") }}</div>
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import CircleBadge from "@/components/common/CircleBadge.vue";
+import BaseCircleBadge from "@/components/BaseCircleBadge.vue";
 import { FinancialProduct } from "@/models";
 import { getAssetId, getIconForAssetType, translateAssetType } from "@/utils";
 import { defineComponent, PropType } from "vue";
@@ -24,8 +24,8 @@ export default defineComponent({
   name: "AssetListItem",
 
   components: {
-    CircleBadge,
     AssetListItemIcon,
+    BaseCircleBadge,
   },
 
   props: {
