@@ -10,25 +10,13 @@
         <ArrowLeftIcon color="#9b4dca" />
       </button>
       <div class="header-title">{{ title }}</div>
-      <button
-        class="icon action-icon"
-        :title="actionTitle"
-        :class="{ invisible: !action }"
-        @click.prevent="onAction"
-      >
-        <Trash2Icon v-if="action === 'delete'" color="#9b4dca" />
-        <DownloadIcon v-else color="#9b4dca" />
-      </button>
+      <div id="header-action"></div>
     </div>
   </header>
 </template>
 
 <script lang="ts">
-import {
-  ArrowLeft as ArrowLeftIcon,
-  Download as DownloadIcon,
-  Trash2 as Trash2Icon,
-} from "lucide-vue-next";
+import { ArrowLeft as ArrowLeftIcon } from "lucide-vue-next";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -36,8 +24,6 @@ export default defineComponent({
 
   components: {
     ArrowLeftIcon,
-    DownloadIcon,
-    Trash2Icon,
   },
 
   props: {
@@ -51,39 +37,19 @@ export default defineComponent({
       required: false,
       default: () => "",
     },
-
-    action: {
-      type: String,
-      required: false,
-    },
   },
 
-  emits: ["back", "action"],
+  emits: ["back"],
 
   computed: {
     navigationTitle(): string {
       return this.navigation ? "Zurück" : "";
-    },
-
-    actionTitle(): string {
-      switch (this.action) {
-        case "delete":
-          return "Löschen";
-        case "download":
-          return "Analyse herunterladen";
-        default:
-          return "";
-      }
     },
   },
 
   methods: {
     onNavigate() {
       this.$emit("back");
-    },
-
-    onAction() {
-      this.$emit("action");
     },
   },
 });
@@ -133,14 +99,6 @@ header {
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.action-icon {
-  margin: 0 -12px 0 calc(32px - 12px);
 }
 
 .nav-icon {

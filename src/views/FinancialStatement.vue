@@ -46,9 +46,13 @@
       />
     </main>
   </template>
+  <teleport to="#header-action">
+    <BaseHeaderActionDownload />
+  </teleport>
 </template>
 
 <script lang="ts">
+import BaseHeaderActionDownload from "@/components/BaseHeaderActionDownload.vue";
 import ButtonFloating from "@/components/ButtonFloating.vue";
 import BlankSlate from "@/components/common/BlankSlate.vue";
 import AssetList from "@/components/financialStatement/AssetList.vue";
@@ -64,6 +68,7 @@ export default defineComponent({
     AssetList,
     BlankSlate,
     ButtonFloating,
+    BaseHeaderActionDownload,
   },
 
   data() {

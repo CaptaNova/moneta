@@ -14,7 +14,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       headerNavigation: undefined,
       headerTitle: undefined,
-      headerAction: undefined,
     },
   },
   {
@@ -24,7 +23,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       headerNavigation: "",
       headerTitle: "Vermögensbilanz",
-      headerAction: "download",
     },
   },
   {
@@ -34,7 +32,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       headerNavigation: "back",
       headerTitle: "Neue Anlage",
-      headerAction: undefined,
     },
   },
   {
@@ -44,7 +41,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       headerNavigation: "back",
       headerTitle: "Anlage bearbeiten",
-      headerAction: "delete",
     },
   },
   {
@@ -54,7 +50,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       headerNavigation: "back",
       headerTitle: "Vermögensstruktur",
-      headerAction: undefined,
     },
   },
   {
@@ -68,7 +63,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       headerNavigation: "back",
       headerTitle: "App-Informationen",
-      headerAction: undefined,
     },
     children: [
       {
@@ -81,7 +75,6 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           headerNavigation: "back",
           headerTitle: "App-Informationen",
-          headerAction: undefined,
         },
       },
       {
@@ -94,7 +87,6 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           headerNavigation: "back",
           headerTitle: "Impressum",
-          headerAction: undefined,
         },
       },
     ],
@@ -106,7 +98,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       headerNavigation: undefined,
       headerTitle: undefined,
-      headerAction: undefined,
     },
   },
 ];
