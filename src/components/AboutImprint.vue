@@ -98,7 +98,6 @@ ul {
   margin: 0 auto;
   max-width: var(--width-max);
   padding: var(--padding-y) calc(2 * var(--padding-x));
-  text-align: left;
 }
 
 @media (min-width: 40rem) {

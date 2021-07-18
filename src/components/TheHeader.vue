@@ -60,6 +60,7 @@ header {
   background-color: white;
   box-shadow: 0 0 1rem 0 white;
   height: calc(16px + 16px + 24px); // TODO: extract to variable
+  text-align: center;
   z-index: var(--z-index-header);
 
   position: fixed;
@@ -138,11 +139,4 @@ header {
     display: none;
   }
 }
-
-/*
-sm: 576px
-md: 768px
-lg: 1012px
-xl: 1280px
-*/
 </style>

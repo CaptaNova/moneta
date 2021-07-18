@@ -1,7 +1,5 @@
 <template>
-  <main>
-    <router-view />
-  </main>
+  <router-view />
 </template>
 
 <script lang="ts">
@@ -11,10 +9,3 @@ export default defineComponent({
   name: "About",
 });
 </script>
-
-<style lang="scss" scoped>
-main {
-  padding-top: calc(6rem + 1rem);
-  text-align: left;
-}
-</style>

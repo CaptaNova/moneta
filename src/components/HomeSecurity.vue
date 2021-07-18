@@ -41,6 +41,7 @@ section {
   color: whitesmoke;
   min-height: 100vh;
   padding: 10vh 0;
+  text-align: center;
 }
 
 .content {

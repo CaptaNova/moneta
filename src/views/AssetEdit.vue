@@ -1,12 +1,10 @@
 <template>
-  <main>
-    <AssetForm
-      :asset="getAsset()"
-      :assetIds="usedAssetIds"
-      primaryButtonText="Speichern"
-      @submit="onSubmit"
-    />
-  </main>
+  <AssetForm
+    :asset="getAsset()"
+    :assetIds="usedAssetIds"
+    primaryButtonText="Speichern"
+    @submit="onSubmit"
+  />
   <teleport to="#header-action">
     <BaseHeaderAction title="Löschen" @click.prevent="onDelete">
       <Trash2Icon color="#9b4dca" />
@@ -65,10 +63,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-main {
-  padding-top: calc(6rem + 1rem);
-  text-align: left;
-}
-</style>

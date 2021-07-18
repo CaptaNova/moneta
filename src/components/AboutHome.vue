@@ -18,10 +18,7 @@
           /></a>
         </li>
         <li>
-          <a
-            href="https://github.com/CaptaNova/moneta/blob/main/COPYING"
-            class="external-link"
-            target="_blank"
+          <a :href="licenseUrl" class="external-link" target="_blank"
             ><span>Lizenz: {{ license }}</span
             ><ExternalLinkIcon
           /></a>
@@ -48,6 +45,7 @@ export default defineComponent({
   data() {
     return {
       license: process.env.VUE_APP_LICENSE,
+      licenseUrl: process.env.VUE_APP_LICENSE_URL,
       version: process.env.VUE_APP_VERSION,
     };
   },
@@ -84,7 +82,6 @@ ul {
   margin: 0 auto;
   max-width: var(--width-max);
   padding: var(--padding-y) calc(2 * var(--padding-x));
-  text-align: left;
 }
 
 .external-link {

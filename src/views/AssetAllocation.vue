@@ -1,19 +1,17 @@
 <template>
-  <main>
-    <div class="content">
-      <section>
-        <h4>Vermögensstruktur</h4>
-        <AssetAllocationList :assetAllocation="assetAllocation" />
-      </section>
-      <section>
-        <h4>Vermögensstruktur</h4>
-        <ChartBarHorizontal
-          :values="assetAllocationValues"
-          :labels="assetAllocationLabels"
-        />
-      </section>
-    </div>
-  </main>
+  <div class="content">
+    <section>
+      <h4>Vermögensstruktur</h4>
+      <AssetAllocationList :assetAllocation="assetAllocation" />
+    </section>
+    <section>
+      <h4>Vermögensstruktur</h4>
+      <ChartBarHorizontal
+        :values="assetAllocationValues"
+        :labels="assetAllocationLabels"
+      />
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -92,12 +90,10 @@ export default defineComponent({
   margin: 0 auto;
   max-width: var(--width-max);
   padding-bottom: calc(1.5 * var(--padding-x));
-  padding-top: calc(6rem + 1rem);
 }
 
 section {
   margin-top: var(--padding-y);
   padding: var(--padding-y) var(--padding-x);
-  text-align: left;
 }
 </style>

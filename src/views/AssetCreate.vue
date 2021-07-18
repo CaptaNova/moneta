@@ -1,12 +1,10 @@
 <template>
-  <main>
-    <AssetForm
-      :asset="createEmptyAsset()"
-      :assetIds="usedAssetIds"
-      primaryButtonText="Anlage hinzufügen"
-      @submit="onSubmit"
-    />
-  </main>
+  <AssetForm
+    :asset="createEmptyAsset()"
+    :assetIds="usedAssetIds"
+    primaryButtonText="Anlage hinzufügen"
+    @submit="onSubmit"
+  />
 </template>
 
 <script lang="ts">
@@ -44,10 +42,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-main {
-  padding-top: calc(6rem + 1rem);
-  text-align: left;
-}
-</style>

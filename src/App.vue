@@ -1,25 +1,34 @@
 <template>
+  <TheSidebar v-if="!isHome" @export="exportAnalysis" />
   <TheHeader
     v-if="headerTitle"
     :navigation="headerNavigation"
     :title="headerTitle"
     @back="navigateBack"
   />
-  <router-view />
+  <main :class="{ home: isHome }">
+    <router-view />
+  </main>
 </template>
 
 <script lang="ts">
 import TheHeader from "@/components/TheHeader.vue";
+import TheSidebar from "@/components/TheSidebar.vue";
 import { defineComponent } from "vue";
+import { mapActions, mapGetters } from "vuex";
+import { createDownloadFile, createDownloadFileName } from "./utils";
 
 export default defineComponent({
   name: "App",
 
   components: {
     TheHeader,
+    TheSidebar,
   },
 
   computed: {
+    ...mapGetters(["accountList"]),
+
     headerAction(): string | undefined {
       return this.$route.meta.headerAction as string | undefined;
     },
@@ -31,9 +40,28 @@ export default defineComponent({
     headerTitle(): string | undefined {
       return this.$route.meta.headerTitle as string | undefined;
     },
+
+    isHome(): boolean {
+      return this.$route.name === "home";
+    },
   },
 
   methods: {
+    ...mapActions(["resetDirty"]),
+
+    exportAnalysis(): void {
+      // see https://medium.com/js-dojo/force-file-download-in-vuejs-using-axios-a7fe1b5dfe7b
+      const data = createDownloadFile(this.accountList);
+
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(new Blob([data]));
+      link.download = createDownloadFileName();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      this.resetDirty();
+    },
+
     navigateBack(): void {
       this.$router.back();
     },
@@ -65,6 +93,7 @@ export default defineComponent({
   --padding-x: 2rem;
   --padding-y: 2rem;
   --width-max: 112rem;
+  --width-sidebar: 0;
   --z-index-header: 2;
 
   @media (min-width: 40rem) {
@@ -74,6 +103,14 @@ export default defineComponent({
   @media (min-width: 60rem) {
     --padding-x: 6rem;
   }
+
+  @media (min-width: 40rem) {
+    --width-sidebar: 56px;
+  }
+
+  @media (min-width: 80rem) {
+    --width-sidebar: 256px;
+  }
 }
 
 header,
@@ -82,12 +119,27 @@ section {
   box-sizing: border-box;
 }
 
+header,
+main {
+  margin-left: var(--width-sidebar);
+}
+
+main {
+  padding-top: calc(6rem + 1rem);
+
+  &.home {
+    // home has no header and no sidebar
+    margin-left: 0;
+    padding-top: 0;
+  }
+}
+
 #app {
   color: #606c76;
   font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   word-wrap: break-word;
 }
 
@@ -149,4 +201,11 @@ section {
 .invisible {
   visibility: hidden;
 }
+
+/*
+sm: 576px
+md: 768px
+lg: 1012px
+xl: 1280px
+*/
 </style>

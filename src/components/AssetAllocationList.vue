@@ -46,6 +46,5 @@ li {
 ul {
   list-style: none;
   margin: 0;
-  text-align: left;
 }
 </style>

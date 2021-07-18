@@ -184,7 +184,6 @@ form {
   margin: 0 auto;
   max-width: var(--width-max);
   padding: 0 var(--padding-x);
-  text-align: left;
 }
 
 label {

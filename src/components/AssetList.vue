@@ -57,7 +57,6 @@ section {
   border-top: 0.1rem solid var(--color-primary);
   margin-top: var(--padding-y);
   padding: var(--padding-y) var(--padding-x);
-  text-align: left;
 }
 
 ul {

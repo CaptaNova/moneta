@@ -22,17 +22,18 @@ export default defineComponent({
 <style lang="scss" scoped>
 h1 {
   font-size: 3.6rem;
+  text-align: center;
 }
 
 h2 {
   font-size: 2.8rem;
+  text-align: center;
 }
 
 ul {
   font-size: 1.8rem;
   list-style-type: none;
   padding: var(--padding-y) var(--padding-x);
-  text-align: left;
 }
 
 section {

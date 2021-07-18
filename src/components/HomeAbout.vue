@@ -24,10 +24,7 @@
         <p>
           <small>
             Moneta ist Open Source, der Quellcode steht unter der
-            <a
-              href="https://github.com/CaptaNova/moneta/blob/main/COPYING"
-              target="_blank"
-              >{{ license }}</a
+            <a :href="licenseUrl" target="_blank">{{ license }}</a
             >.<br />
             Created with &hearts; by
             <a href="https://captanova.de" target="_blank">CaptaNova</a>.
@@ -53,6 +50,7 @@ export default defineComponent({
   data() {
     return {
       license: process.env.VUE_APP_LICENSE,
+      licenseUrl: process.env.VUE_APP_LICENSE_URL,
     };
   },
 });
@@ -88,7 +86,6 @@ section {
   margin: 0 auto;
   max-width: var(--width-max);
   padding: var(--padding-y) var(--padding-x);
-  text-align: left;
 }
 
 @media (min-width: 40rem) {
@@ -106,10 +103,6 @@ section {
 
   .content {
     justify-content: center;
-    margin: 0 auto;
-    max-width: var(--width-max);
-    padding: var(--padding-y) var(--padding-x);
-    text-align: left;
   }
 }
 </style>

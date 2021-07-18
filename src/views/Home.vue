@@ -1,10 +1,8 @@
 <template>
-  <main>
-    <HomeHero />
-    <HomeFunction />
-    <HomeSecurity />
-    <HomeAbout />
-  </main>
+  <HomeHero />
+  <HomeFunction />
+  <HomeSecurity />
+  <HomeAbout />
 </template>
 
 <script lang="ts">

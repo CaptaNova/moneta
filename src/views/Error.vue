@@ -1,28 +1,22 @@
 <template>
-  <main>
-    <div class="content flex-column flex-center">
-      <h1>Erwischt!</h1>
-      <p>
-        Wir haben gerade unser Geld gezählt und waren wohl einen Moment nicht
-        aufmerksam. Peinlich!
-      </p>
-      <div class="actions">
-        <router-link class="button" to="/financial-statement"
-          >Zruück zur Finanzübersicht</router-link
-        >
-      </div>
+  <div class="content flex-column flex-center">
+    <h1>Erwischt!</h1>
+    <p>
+      Wir haben gerade unser Geld gezählt und waren wohl einen Moment nicht
+      aufmerksam. Peinlich!
+    </p>
+    <div class="actions">
+      <router-link class="button" to="/financial-statement"
+        >Zruück zur Finanzübersicht</router-link
+      >
     </div>
-  </main>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 h1 {
   font-size: 3.6rem;
   margin-bottom: var(--padding-x);
-}
-
-main {
-  height: 100vh;
 }
 
 p {
@@ -34,7 +28,7 @@ p {
 }
 
 .content {
-  height: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   max-width: var(--width-max);
   padding: var(--padding-y) var(--padding-x);
