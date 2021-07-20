@@ -1,3 +1,6 @@
+# Disable server signature
+ServerSignature Off
+
 # Disable directory browsing
 Options All -Indexes
 
