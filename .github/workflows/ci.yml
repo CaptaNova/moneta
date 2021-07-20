@@ -3,7 +3,12 @@
 
 name: Continuous Integration
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,6 +26,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+          cache: npm
       - name: Install dependencies
         run: npm ci
       - name: Build
@@ -35,3 +41,12 @@ jobs:
         run: npm run test:unit
         env:
           CI: true
+      - name: Deploy
+        if: github.ref == 'refs/heads/main' && github.repository == 'CaptaNova/moneta'
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          local-dir: ./dist/
+          dangerous-clean-slate: true
