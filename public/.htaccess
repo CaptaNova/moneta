@@ -1,0 +1,12 @@
+# Disable directory browsing
+Options All -Indexes
+
+# Extra Security Headers
+<IfModule mod_headers.c>
+	Header set X-XSS-Protection "1; mode=block"
+	Header always append X-Frame-Options "SAMEORIGIN"
+	Header set X-Content-Type-Options nosniff
+    # Strict-Transport-Security, 1 month
+    Header always set Strict-Transport-Security "max-age=2592000; includeSubDomains"
+    Header set Referrer-Policy "same-origin"
+</IfModule>
