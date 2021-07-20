@@ -1,4 +1,4 @@
-# Use AGPL as License
+# 1. Use AGPL as License
 
 - Status: accepted
 - Date: 2021-06-30
